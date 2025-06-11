@@ -14,29 +14,29 @@ SQL statements can be broadly grouped into four different classes, or sub-langua
 
 **Data Query Language (DQL):** Includes commands for performing queries on data within schema objects, retrieving some schema relation based on the query passed to it.
 
-**SELECT** retrieves data from the database.
+**SELECT:** retrieves data from the database.
 
 **Data Definition Language (DDL):** Includes commands used to define the database schema. These commands are used to create and modify the structure of database objects.
 
-**CREATE** creates an object in the database.
+**CREATE:** creates an object in the database.
 
-**DROP** deletes an object from the database.
+**DROP:** deletes an object from the database.
 
-**ALTER** changes the definition of an existing object in the database.
+**ALTER:** changes the definition of an existing object in the database.
 
 **Data Manipulation Language (DML):** Includes commands used to modify the data stored in the database. Examples include:
 
-**INSERT** inserts new data into a database table.
+**INSERT:** inserts new data into a database table.
 
-**UPDATE** alters data in a database table.
+**UPDATE:** alters data in a database table.
 
-**DELETE** removes data from a database table.
+**DELETE:** removes data from a database table.
 
 **Data Control Language (DCL):** Includes commands dealing with the controls and properties of the DBMS, such as rights and permissions to database objects.
 
-**GRANT** grants a user permissions on a database object.
+**GRANT:** grants a user permissions on a database object.
 
-**REVOKE** removes a user’s permissions on a database object.
+**REVOKE:** removes a user’s permissions on a database object.
 
 
 **1. Let’s begin by entering a SQL command.**
