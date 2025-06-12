@@ -41,7 +41,9 @@ SQL statements can be broadly grouped into four different classes, or sub-langua
 
 **1. Let’s begin by entering a SQL command.**
 
-  <img width="218" alt="image" src="https://github.com/user-attachments/assets/0c255825-50df-4ecf-8a37-e86bf98208c6" />
+```SQL
+ SELECT * FROM celebs;
+
 
 
 
