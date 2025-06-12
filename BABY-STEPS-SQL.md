@@ -43,6 +43,59 @@ SQL statements can be broadly grouped into four different classes, or sub-langua
 
 ```SQL
  SELECT * FROM celebs;
+```
+
+**Common errors:**                 
+* Did you forget the *?           
+* Did you forget the ;?               
+* The table should show four rows of data and three columns (id, name, and age).            
+We will explain what this line means in a bit!
+
+# Database
+
+A database is a collection of structured information stored so it can be easily accessed and updated. In a computer system, databases are commonly accessed through a database management system, referred to as a DBMS.
+
+# Types of Databases
+There are many different ways for database systems to structure and organize data. The type of database used is dependent on the type of data being stored, and the intended use for it.
+
+# Object Databases
+Object databases structure their data in the form of objects (as used in object-oriented programming) rather than tables. This is useful in software development where the application using the data, and the DBMS manipulating the data, can both use the same model of the data.
+
+# Object-Relational Databases
+A hybrid of the above two models. Unlike pure object databases where the database is primarily a persistent store for objects created by a program written in an object-oriented programming language, object-relational databases are manipulated via a query language as in relational databases. Yet they still support objects, classes and inheritance like a pure object database.
+
+# NoSQL Databases
+NoSQL databases are also known as nonrelational databases. They are a wide variety of databases that use different structures for data rather than the tables used in relational databases. They are implemented using various different structures for different purposes. For example:
+
+* Key–Value Store: Stores data in an associative array where data is stored as a collection of key-value pairs where any possible key only appears once in the collection.            
+* Document Store: Stores data as documents in some standard format such as XML, TAML or JSON. Documents are stored in the database with a unique key representing that document.                  
+* Graph Database: Stores data as elements connected by a finite number of relations, such as a subway map or a network of friends on Facebook.
+  
+# Relational Databases
+
+ A relational database is a database that organizes information into one or more tables. Here, the relational database contains one table.                
+ A table is a collection of data organized into rows and columns. Tables are sometimes referred to as relations. Here the table is `celebs`.                        
+ A column is a set of data values of a particular type. Here, `id`, `name`, and `age` are the columns.           
+
+ A row is a single record in a table. The first row in the celebs table has:                
+* An `id` of `1`                
+* A `name` of `Justin Bieber`
+* An `age` of `29`
+
+All data stored in a relational database is of a certain data type.       
+Some of the most common data types are:          
+* `INTEGER`, a positive or negative whole number
+* `TEXT`, a text string
+* `DATE`, the date formatted as YYYY-MM-DD
+* `REAL`, a decimal value
+
+
+
+
+
+
+
+
 
 
 
