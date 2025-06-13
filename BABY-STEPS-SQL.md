@@ -166,7 +166,7 @@ CREATE TABLE celebs (
 The `INSERT` statement inserts a new row into a table.                                             
 We can use the `INSERT` statement when you want to add new records.
 
-**(1)** Write an SQL statement to insert a new row into the celebs table with Name = 'Justin Bieber', ID = 1, and Age = 29.     In the code editor, type:
+**(1)** Write an SQL statement to insert a row into the celebs table with Name = 'Justin Bieber', ID = 1, and Age = 29.     In the code editor, type:
 
 ```SQL
 INSERT INTO celebs (id, name, age) 
@@ -184,6 +184,18 @@ VALUES (1, 'Justin Bieber', 29);
 
 📝 Make sure there is a set of parentheses around the column names and values to be inserted into the table!        
 📝 Notice the single quotes around Justin Bieber. This is because text strings require quotes around them, while numbers don’t.
+
+**(2)** Add three more celebrities to the table. Beneath your previous `INSERT` statement type.
+```SQL
+INSERT INTO celebs (id, name, age) 
+VALUES (2, 'Beyonce Knowles', 42); 
+
+INSERT INTO celebs (id, name, age) 
+VALUES (3, 'Jeremy Lin', 35); 
+
+INSERT INTO celebs (id, name, age) 
+VALUES (4, 'Taylor Swift', 33); 
+```
 
 
 
