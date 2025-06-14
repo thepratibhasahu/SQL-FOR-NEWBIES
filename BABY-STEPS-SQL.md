@@ -179,7 +179,9 @@ We can use the `INSERT` statement when you want to add new records.
 
 ```SQL
 INSERT INTO celebs (id, name, age) 
-VALUES (1, 'Justin Bieber', 29); 
+VALUES (1, 'Justin Bieber', 29);
+
+SELECT * FROM celebs; 
 ```
 ### 🟩 Output
 ```sql
@@ -208,7 +210,9 @@ INSERT INTO celebs (id, name, age)
 VALUES (3, 'Jeremy Lin', 35); 
 
 INSERT INTO celebs (id, name, age) 
-VALUES (4, 'Taylor Swift', 33); 
+VALUES (4, 'Taylor Swift', 33);
+
+SELECT * FROM celebs; 
 ```
 ### 🟩 Output
 ```SQL
@@ -259,6 +263,8 @@ The `ALTER TABLE` statement adds a new column to a table. You can use this comma
 ```SQL
 ALTER TABLE celebs 
 ADD COLUMN twitter_handle TEXT;
+
+SELECT * FROM celebs; 
 ```
 ### 🟩 Output
 ```SQL
@@ -286,6 +292,8 @@ The `UPDATE` statement edits a row in a table. You can use the `UPDATE` statemen
 UPDATE celebs 
 SET twitter_handle = '@taylorswift13' 
 WHERE id = 4;
+
+SELECT * FROM celebs; 
 ```
 ### 🟩 Output
 ```SQL
@@ -301,6 +309,37 @@ id	  name	        age	twitter_handle
 
 * `twitter_handle` is the name of the column that is going to be updated.
 * `@taylorswift13` is the new value that is going to be inserted into the `twitter_handle` column.
+
+**4.** WHERE is a clause that indicates which row(s) to update with the new column value. Here the row with a 4 in the id column is the row that will have the twitter_handle updated to @taylorswift13.
+
+# Delete
+
+The `DELETE FROM` statement deletes one or more rows from a table. You can use the statement when you want to delete existing records.
+
+**(1)** Delete all of the rows that have a `NULL` value in the twitter handle column. In the code editor type:  
+& How many rows exist in the `celebs` table now?
+
+```SQL
+DELETE FROM celebs 
+WHERE twitter_handle IS NULL;
+
+SELECT * FROM celebs; 
+```
+### 🟩 Output
+```SQL
+id	  name	        age	twitter_handle
+4	Taylor Swift	 33     @taylorswift13
+```
+**1.** `DELETE FROM` is a clause that lets you delete rows from a table.             
+**2.** `celebs` is the name of the table we want to delete rows from.                  
+**3.** `WHERE` is a clause that lets you select which rows you want to delete. Here we want to delete all of the rows where the twitter_handle column IS NULL.                             
+**4.** `IS NULL` is a condition in SQL that returns true when the value is `NULL` and false otherwise.
+
+
+
+
+
+
 
 
 
