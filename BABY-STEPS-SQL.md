@@ -157,7 +157,16 @@ CREATE TABLE celebs (
    name TEXT, 
    age INTEGER
 ); 
-```  
+```
+### 🟩 Output
+```SQL
+Database Schema
+   celebs
+name	type
+id	INTEGER
+name	TEXT
+age	INTEGER
+```
 📝 Insert commas after the first two columns are declared.                       
 📝 End your statement with a `;`.
 
@@ -171,6 +180,11 @@ We can use the `INSERT` statement when you want to add new records.
 ```SQL
 INSERT INTO celebs (id, name, age) 
 VALUES (1, 'Justin Bieber', 29); 
+```
+### 🟩 Output
+```sql
+id	  name  	age
+1	Justin Bieber	29
 ```
 
 * `INSERT INTO` is a clause that adds the specified row or rows.
@@ -196,11 +210,27 @@ VALUES (3, 'Jeremy Lin', 35);
 INSERT INTO celebs (id, name, age) 
 VALUES (4, 'Taylor Swift', 33); 
 ```
+### 🟩 Output
+```SQL
+id	  name	        age	
+1 	Justin Bieber	 29       
+2	Beyonce Knowles  42      
+3	Jeremy Lin	 35       	
+4	Taylor Swift	 33
+```
 # Select
 
 `SELECT` statements are used to fetch data from a database. In the statement below, `SELECT` returns all data in the `name` column of the `celebs` table.
 ```SQL
 SELECT name FROM celebs;
+```
+### 🟩 Output
+```sql
+   name
+Justin Bieber
+Beyonce Knowles
+Jeremy Lin
+Taylor Swift
 ```
 **1.** `SELECT` is a clause that indicates that the statement is a query. You will use SELECT every time you query data from a database.                        
 **2.** `name` specifies the column to query data from.                          
@@ -210,7 +240,72 @@ SELECT name FROM celebs;
 ```SQL
 SELECT * FROM celebs;
 ```
+### 🟩 Output
+```SQL
+id	  name	        age	
+1 	Justin Bieber	 29       
+2	Beyonce Knowles  42      
+3	Jeremy Lin	 35       	
+4	Taylor Swift	 33
+```
 * `*` is a special wildcard character that we have been using. It allows you to select every column in a table without having to name each one individually.
+
+# Alter
+
+The `ALTER TABLE` statement adds a new column to a table. You can use this command when you want to add columns to a table.
+
+**(1)** Write an SQL statement to add a new column twitter_handle to the celebs table. In the code editor, type the command to add this column.
+
+```SQL
+ALTER TABLE celebs 
+ADD COLUMN twitter_handle TEXT;
+```
+### 🟩 Output
+```SQL
+id	  name	        age	twitter_handle
+1 	Justin Bieber	 29       ∅
+2	Beyonce Knowles  42       ∅
+3	Jeremy Lin	 35       ∅	
+4	Taylor Swift	 33       ∅
+```
+**1.** `ALTER TABLE` is a clause that lets you make the specified changes.                        
+**2.** `celebs` is the name of the table that is being changed.                               
+**3.** `ADD COLUMN` is a clause that lets you add a new column to a table:                      
+ * `twitter_handle` is the name of the new column being added.
+ * `TEXT` is the data type for the new column.
+
+ **4.** `NULL` is a special value in SQL that represents missing or unknown data. Here, the rows that existed before the column was added have `NULL` (∅) values for `twitter_handle`.
+
+ # Update
+
+The `UPDATE` statement edits a row in a table. You can use the `UPDATE` statement when you want to change existing records.
+
+**(1)** Write an SQL statement to update the record in the celebs table where the id is 4, setting the twitter_handle to @taylorswift13. In the code editor, type the command to update Taylor Swift’s Twitter handle.
+
+```sql
+UPDATE celebs 
+SET twitter_handle = '@taylorswift13' 
+WHERE id = 4;
+```
+### 🟩 Output
+```SQL
+id	  name	        age	twitter_handle
+1 	Justin Bieber	 29       ∅
+2	Beyonce Knowles  42       ∅
+3	Jeremy Lin	 35       ∅	
+4	Taylor Swift	 33     @taylorswift13
+```
+**1.** `UPDATE` is a clause that edits a row in the table.                              
+**2.** `celebs` is the name of the table.                                   
+**3.** `SET` is a clause that indicates the column to edit.
+
+* `twitter_handle` is the name of the column that is going to be updated.
+* `@taylorswift13` is the new value that is going to be inserted into the `twitter_handle` column.
+
+
+
+
+
 
 
 
