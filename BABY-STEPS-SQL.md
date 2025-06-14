@@ -335,6 +335,34 @@ id	  name	        age	twitter_handle
 **3.** `WHERE` is a clause that lets you select which rows you want to delete. Here we want to delete all of the rows where the twitter_handle column IS NULL.                             
 **4.** `IS NULL` is a condition in SQL that returns true when the value is `NULL` and false otherwise.
 
+# Constraints
+
+Constraints in SQL are the rules applied to the values of individual columns. They add information about how a column can be used after specifying the data type for a column. They can be used to tell the database to reject inserted data that does not adhere to a certain restriction.             
+The statement below sets constraints on the celebs table.
+```SQL
+CREATE TABLE celebs (
+   id INTEGER PRIMARY KEY, 
+   name TEXT UNIQUE,
+   date_of_birth TEXT NOT NULL,
+   date_of_death TEXT DEFAULT 'Not Applicable'
+);
+```
+* `PRIMARY KEY` columns can be used to uniquely identify the row. Attempts to insert a row with an identical value to a row already in the table will result in a constraint violation which will not allow you to insert the new row.                   → `id` column is the `PRIMARY KEY`.
+
+* `UNIQUE` columns have a different value for every row. This is similar to `PRIMARY KEY` except a table can have many different `UNIQUE` columns.                                                                                                 → `name` column is `UNIQUE`.
+
+* `NOT NULL` columns must have a value. Attempts to insert a row without a value for a `NOT NULL` column will result in a constraint violation and the new row will not be inserted.
+→ `date_of_birth` column is `NOT NULL`.
+
+* `DEFAULT` columns take an additional argument that will be the assumed value for an inserted row if the new row does not specify a value for that column.                                                                                            →  `date_of_death` column has a `DEFAULT` of 'Not Applicable'.
+
+ 📝 Note: There can be only one `PRIMARY KEY` column per table, but there can be multiple `UNIQUE` columns.
+
+
+
+
+
+
 
 
 
