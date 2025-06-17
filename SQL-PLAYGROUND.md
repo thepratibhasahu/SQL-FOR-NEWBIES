@@ -150,14 +150,186 @@ SELECT imdb_rating AS 'IMDB' FROM movies;
       7.9      
       8.5      
       7.3      
-      7.3      
+      NULL      
       7.3      
       6.0      
-      7.7      
+      NULL      
       7.3      
       6.3      
       7.4      
 ```
+# Distinct
+When we are examining data in a table, it can be helpful to know what distinct values exist in a particular column.         
+`DISTINCT` is used to return unique values in the output. It filters out all duplicate values in the specified column(s).
+
+→ For instance,
+```SQL
+SELECT tools FROM inventory;
+```
+→ might produce:
+
+```SQL
+      tools
+-----------------
+      Hammer
+      Nails
+      Nails
+      Nails
+```
+→ By adding `DISTINCT` before the column name,
+```SQL
+SELECT DISTINCT tools FROM inventory;
+```
+```SQL
+      tools
+   ------------
+      Hammer
+      Nails
+```
+Filtering the results of a query is an important skill in SQL. It is easier to see the different possible `genres` in the `movie` table after the data has been filtered than to scan every row in the table.
+**(1.)** Let’s try it out. In the code editor, type:                              
+* What are the unique genres?
+```SQL
+SELECT DISTINCT genre FROM movies;
+```
+### 🟩 Output
+```SQL
+     genre     
+---------------
+    action     
+    comedy     
+    horror     
+   romance     
+    drama      
+      ∅
+```
+📝 DISTINCT recognize empty values, too.
+
+**(2.)** Now, change the code so we return the unique values of the year column instead.
+```SQL
+SELECT DISTINCT year FROM movies;
+```
+### 🟩 Output
+```SQL
+   year   
+----------
+  2009    
+  2015    
+  2012    
+  2008    
+  1999    
+  1977    
+  2006    
+  2013    
+  2002    
+  2005    
+  2004    
+  2011    
+  2014    
+  2007    
+  2010    
+  1983    
+  1996    
+  2003    
+  1980    
+  1989    
+  1984    
+  1997    
+  2001    
+  1990    
+  2000    
+  1993    
+  1992    
+  1985    
+  1994    
+  1978    
+  1979    
+  1986    
+  1998    
+  1991    
+  1939    
+  1937    
+  1982    
+  1965    
+  1995    
+  1975    
+  1988    
+  1987
+   ∅	   
+  2017    
+  2016    
+```
+# Where
+We can restrict our query results using the `WHERE` clause in order to obtain only the information we want.
+
+Following this format, the statement below filters the result set to only include top rated movies (IMDb ratings greater than 8):
+```SQL
+SELECT * FROM movies
+WHERE imdb_rating > 8;
+```
+→ How does it work?
+**1.** The `WHERE` clause filters the result set to only include rows where the following condition is true.
+
+**2.** `imdb_rating > 8` is the condition. Here, only rows with a value greater than 8 in the `imdb_rating` column will be returned.                           
+The `>` is an operator. Operators create a condition that can be evaluated as either true or false.                         
+
+Comparison operators used with the `WHERE` clause are:                      
+* `=` equal to
+* `!=` not equal to
+* `>` greater than
+* `<` less than
+* `>=` greater than or equal to
+* `<=` less than or equal to
+
+**(1.)** Suppose we want to take a peek at all the not-so-well-received movies in the database.                     
+In the code editor, type:                           
+* We are trying to retrieve all the movies with ratings lower than 5.
+```SQL
+SELECT * FROM movies 
+WHERE imdb_rating < 5;
+```
+### 🟩 Output
+```SQL
+  id   |                   name                    |  genre  | year | imdb_rating
+-------|-------------------------------------------|---------|------|-------------
+  79   | Alvin and the Chipmunks: The Squeakquel   | comedy  | 2009 |     4.4     
+ 113   |               The Haunting                | horror  | 1999 |     4.9     
+ 120   | Scooby-Doo 2: Monsters Unleashed          | horror  | 2004 |     4.9     
+ 143   |                 Anaconda                  | horror  | 1997 |     4.6     
+ 149   |       The Twilight Saga: Eclipse          | romance | 2010 |     4.9     
+ 150   |      The Twilight Saga: New Moon          | romance | 2009 |     4.6     
+ 152   | The Twilight Saga: Breaking Dawn - Part 1 | romance | 2011 |     4.9     
+ 171   |          Fifty Shades of Grey             | romance | 2015 |     4.2     
+```
+**(2.)** Now retrieve all the recent movies, specifically those that were released after 2014.           
+Select all the columns using *.
+```SQL
+SELECT * FROM movies
+WHERE year > 2014;
+```
+### 🟩 Output
+```SQL
+  id  |               name               |  genre   | year | imdb_rating
+------|----------------------------------|----------|------|-------------
+  2   |         Jurassic World           |  action  | 2015 |     7.3     
+  7   |    Avengers: Age of Ultron       |  action  | 2015 |     7.9     
+ 17   |          Furious Seven           |  action  | 2015 |     7.4     
+ 56   |            Inside Out            |  comedy  | 2015 |     8.6     
+ 58   |             Minions              |  comedy  | 2015 |     6.7     
+156   |            Cinderella            | romance  | 2015 |     7.1     
+171   |      Fifty Shades of Grey        | romance  | 2015 |     4.2     
+224   |   Star Wars: The Force Awakens   |  action  | 2015 |     8.1     
+225   |    Star Wars: The Last Jedi      |  action  | 2017 |    NULL     
+228   |      Ali Wong: Baby Cobra        |   NULL   | 2016 |    NULL     
+229   |           The Big Sick           | romance  | 2017 |    NULL     
+230   |             Deadpool             |  action  | 2016 |    NULL     
+```
+
+
+
+
+
+
 
 
 
