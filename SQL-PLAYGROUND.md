@@ -447,6 +447,16 @@ WHERE name LIKE 'The %';
 * `LIKE _a%` finds any values that have the letter ‘a’ in the second index
 * `LIKE a_%_%` finds any values that start with ‘a’ and are at least 3 characters in length.
 * `LIKE a%r` finds any values that start with ‘a’ and end with ‘r’.
+# Is Null
+By this point of the lesson, you might have noticed that there are a few missing values in the `movies` table. More often than not, the data you encounter will have missing values.
+
+Unknown values are indicated by `NULL`.
+
+It is not possible to test for `NULL` values with comparison operators, such as `=` and `!=`.
+
+Instead, we will have to use these operators:
+
+
 
 
 
