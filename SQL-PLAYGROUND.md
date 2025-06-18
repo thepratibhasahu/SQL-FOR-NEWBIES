@@ -454,7 +454,274 @@ Unknown values are indicated by `NULL`.
 
 It is not possible to test for `NULL` values with comparison operators, such as `=` and `!=`.
 
-Instead, we will have to use these operators:
+Instead, we will have to use these operators:                                  
+* `IS NULL`
+(The IS NULL operator checks if a value is NULL.)
+* `IS NOT NULL`
+(The IS NOT NULL operator checks if a value is not equal to NULL.)
+
+→ To filter for all movies with an IMDb rating:
+```SQL
+SELECT name FROM movies 
+WHERE imdb_rating IS NOT NULL;
+```
+**(1.)** Now let’s do the opposite.                           
+Write a query to find all the movies without an IMDb rating.                                      
+Select only the `name` column!               
+* We want to query for movies that have a missing value in their `imdb_rating` field:
+```SQL
+SELECT name FROM movies
+WHERE imdb_rating IS NULL;
+```
+### 🟩 Output
+```SQL
+               name               
+----------------------------------
+ The Good, the Bad and the Ugly  
+       Dawn of the Dead          
+      Shawn of the Dead          
+   Star Wars: The Last Jedi      
+    Ali Wong: Baby Cobra         
+         The Big Sick            
+           Deadpool
+```
+# Between
+The `BETWEEN` operator is used in a `WHERE` clause to filter the result set within a certain range. It accepts two values that are either numbers, text or dates.
+
+For example, this statement filters the result set to only include movies with `years` from 1990 up to, and including 1999.
+```SQL
+SELECT * FROM movies
+WHERE year BETWEEN 1990 AND 1999;
+```
+When the values are text, `BETWEEN` filters the result set for within the alphabetical range.
+
+In this statement, `BETWEEN` filters the result set to only include movies with `names` that begin with the letter ‘A’ up to, but not including ones that begin with ‘J’.
+```SQL
+SELECT * FROM movies
+WHERE name BETWEEN 'A' AND 'J';
+```
+However, if a movie has a name of simply ‘J’, it would actually match. This is because BETWEEN goes up to the second value — up to ‘J’. So the movie named ‘J’ would be included in the result set but not ‘Jaws’.
+
+**(1)** Using the `BETWEEN` operator, write a query that selects all information about movies whose `name` begins with the letters ‘D’, ‘E’, and ‘F’.
+```SQL
+SELECT * FROM movies
+WHERE name BETWEEN 'D' AND 'G';
+```
+### 🟩 Output
+```SQL
+  id  |               name                |  genre   | year | imdb_rating
+------|-----------------------------------|----------|------|-------------
+203   |       Dances with Wolves          |  drama   | 1990 |     8.0     
+128   |           Dark Shadows            |  horror  | 2012 |     6.2     
+222   |         Dawn of the Dead          |  horror  | 1978 |    NULL     
+200   | Dawn of the Planet of the Apes    |  drama   | 2014 |     7.7     
+230   |             Deadpool              |  action  | 2016 |    NULL     
+ 68   |          Despicable Me            |  comedy  | 2010 |     7.7     
+ 55   |         Despicable Me 2           |  comedy  | 2013 |     7.5     
+122   |             Dracula               |  horror  | 1992 |     7.5     
+168   |               Elf                 | romance  | 2003 |     6.9     
+139   |           End of Days             |  horror  | 1999 |     5.7     
+ 45   |        Fast & Furious 6           |  action  | 2013 |     7.2     
+171   |      Fifty Shades of Grey         | romance  | 2015 |     4.2     
+ 54   |          Finding Nemo             |  comedy  | 2003 |     8.2     
+148   |           Forrest Gump            | romance  | 1994 |     8.8     
+123   |        Freddy vs. Jason           |  horror  | 2003 |     5.8     
+145   |        Friday the 13th            |  horror  | 2009 |     5.6     
+ 53   |              Frozen               |  comedy  | 2013 |     7.6     
+ 17   |           Furious Seven           |  action  | 2015 |     7.4     
+```
+📝 `BETWEEN 'D' AND 'F'` should not be the condition because it would return names that begin with ‘D’ and ‘E’, but not ‘F’ (unless there was a movie with the single letter name of “F”).                          
+📝 And don’t forget to capitalize `D` and `G`!                                 
+📝 `BETWEEN` is case-sensitive. If the condition is `BETWEEN 'a' AND 'z'`, it would only return lowercase (a-z) results and not uppercase (A-Z).
+
+**(2.)** Using the `BETWEEN` operator, write a new query that selects all information about movies that were released from the year 1970 up to and including 1979.
+```SQL
+SELECT * FROM movies
+WHERE year BETWEEN 1970 AND 1979;
+```
+### 🟩 Output
+```SQL
+  id  |            name             |  genre  | year | imdb_rating
+------|-----------------------------|---------|------|-------------
+  6   |          Star Wars          | action  | 1977 |     8.7     
+109   |           Jaws 2            | horror  | 1978 |     5.7     
+116   |  The Amityville Horror      | horror  | 1979 |     6.2     
+194   |            Jaws             | drama   | 1975 |     8.1     
+220   |           Seven             | drama   | 1979 |     6.1     
+222   |       Dawn of the Dead      | horror  | 1978 |    NULL     
+```
+📝 Remember, `BETWEEN` two numbers is inclusive of the second number.                
+📝 Notice that there is a movie from 1979 in the result.                       
+📝 Also, numeric values (INTEGER or REAL data types) don’t need to be wrapped with single quotes, whereas TEXT values do.
+
+# And
+Sometimes we want to combine multiple conditions in a `WHERE` clause to make the result set more specific and useful.
+
+One way of doing this is to use the `AND` operator. Here, we use the `AND` operator to only return 90’s romance movies.
+```SQL
+SELECT * FROM movies
+WHERE year BETWEEN 1990 AND 1999
+AND genre = 'romance';
+```
+* `year BETWEEN 1990 AND 1999` is the 1st condition.
+* `genre = 'romance'` is the 2nd condition.
+* `AND` combines the two conditions.
+
+<img width="268" alt="image" src="https://github.com/user-attachments/assets/ff2eb538-3bac-4d99-a91c-1e24d5d67ac5" />
+
+With AND, both conditions must be true for the row to be included in the result.
+
+**(1.)** In the previous exercise, we retrieved every movie released in the 1970’s.              
+Now, let’s retrieve every movie released in the 70’s, that’s also well received.                   
+In the code editor, type:
+```SQL
+SELECT * FROM movies
+WHERE year BETWEEN 1970 AND 1979
+AND imdb_rating > 8;
+```
+* We are putting `AND imdb_rating > 8` on another line and indented just so it is easier to read.
+### 🟩 Output
+```SQL
+ id  |    name    | genre  | year | imdb_rating
+-----|------------|--------|------|-------------
+  6  | Star Wars  | action | 1977 |     8.7     
+194  |   Jaws     | drama  | 1975 |     8.1     
+```
+**(2.)** Remove the previous query.              
+Suppose we have a picky friend who only wants to watch old horror films.                   
+Using `AND`, write a new query that selects all movies made prior to 1985 that are also in the `horror` genre.
+```SQL
+SELECT * FROM movies
+WHERE year < 1985
+AND genre = 'horror';
+```
+### 🟩 Output
+```SQL
+  id  |           name            |  genre  | year | imdb_rating
+------|----------------------------|---------|------|-------------
+100   |         Gremlins          | horror  | 1984 |     7.2     
+109   |          Jaws 2           | horror  | 1978 |     5.7     
+116   |  The Amityville Horror    | horror  | 1979 |     6.2     
+222   |      Dawn of the Dead     | horror  | 1978 |    NULL     
+```
+# Or
+Similar to `AND`, the `OR` operator can also be used to combine multiple conditions in `WHERE`, but there is a fundamental difference:
+
+* `AND` operator displays a row if all the conditions are true.
+* `OR` operator displays a row if any condition is true.
+
+ → Suppose we want to check out a new movie or something action-packed:
+ ```SQL
+SELECT * FROM movies
+WHERE year > 2014
+OR genre = 'action';
+```
+* `year > 2014` is the 1st condition.
+* `genre = 'action'` is the 2nd condition.
+* `OR` combines the two conditions.
+
+ <img width="271" alt="image" src="https://github.com/user-attachments/assets/aa2d0a4d-328e-48e4-94d7-76def3eaa2bc" />
+
+With `OR`, if any of the conditions are true, then the row is added to the result.
+
+### 🟩 Output
+```SQL
+ id  |                  name                   |   genre   | year | imdb_rating
+-----|-----------------------------------------|-----------|------|-------------
+  1  |                Avatar                   |  action   | 2009 |     7.9     
+  2  |           Jurassic World                |  action   | 2015 |     7.3     
+  3  |            The Avengers                 |  action   | 2012 |     8.1     
+  4  |          The Dark Knight                |  action   | 2008 |     9.0     
+  6  |              Star Wars                  |  action   | 1977 |     8.7     
+  7  |      Avengers: Age of Ultron            |  action   | 2015 |     7.9     
+  8  |       The Dark Knight Rises             |  action   | 2012 |     8.5     
+ 10  |             Iron Man 3                  |  action   | 2013 |     7.3     
+ 11  |              Spider-Man                 |  action   | 2002 |     7.3     
+ 12  | Transformers: Revenge of the Fallen     |  action   | 2009 |     6.0     
+ 14  |             Spider-Man 2                |  action   | 2004 |     7.3     
+ 15  | Transformers: Dark of the Moon          |  action   | 2011 |     6.3     
+ 16  |           American Sniper               |  action   | 2014 |     7.4     
+ 17  |            Furious Seven                |  action   | 2015 |     7.4     
+ 18  |             Spider-Man 3                |  action   | 2007 |     6.2     
+ 19  |       Guardians of the Galaxy           |  action   | 2014 |     8.1     
+ 20  |             Transformers                |  action   | 2007 |     7.1     
+ 21  |              Iron Man                   |  action   | 2008 |     7.9     
+ 23  |              Iron Man 2                 |  action   | 2010 |     7.1     
+ 25  | Pirates of the Caribbean: At Worlds End |  action   | 2007 |     7.1     
+ 27  |           Independence Day              |  action   | 1996 |     6.9     
+ 29  |                Skyfall                  |  action   | 2012 |     7.8     
+ 30  |               Inception                 |  action   | 2010 |     8.8     
+ 31  |             Man of Steel                |  action   | 2013 |     7.2     
+ 33  |         The Matrix Reloaded             |  action   | 2003 |     7.2     
+ 34  |      The Amazing Spider-Man             |  action   | 2012 |     7.1     
+ 35  |           The Incredibles               |  action   | 2004 |     8.0     
+ 36  | Captain America: The Winter Soldier     |  action   | 2014 |     7.8     
+ 37  |            The Lego Movie               |  action   | 2014 |     7.8     
+ 38  |               Star Trek                 |  action   | 2009 |     8.0     
+ 39  |                Batman                   |  action   | 1989 |     7.6     
+ 40  |        Night at the Museum              |  action   | 2006 |     6.4     
+ 41  | Transformers: Age of Extinction         |  action   | 2014 |     5.8     
+ 42  |                Twister                  |  action   | 1996 |     6.3     
+ 43  |              Maleficent                 |  action   | 2014 |     7.0     
+ 45  |          Fast & Furious 6               |  action   | 2013 |     7.2     
+ 46  |         Beverly Hills Cop               |  action   | 1984 |     7.3     
+ 47  |       X-Men: The Last Stand             |  action   | 2006 |     6.8     
+ 48  |    X-Men: Days of Future Past           |  action   | 2014 |     8.1     
+ 49  | The Lost World: Jurassic Park           |  action   | 1997 |     6.5     
+ 50  |       Star Trek Into Darkness           |  action   | 2013 |     7.8     
+ 56  |              Inside Out                 |  comedy   | 2015 |     8.6     
+ 58  |               Minions                   |  comedy   | 2015 |     6.7     
+156  |             Cinderella                  | romance   | 2015 |     7.1     
+171  |       Fifty Shades of Grey              | romance   | 2015 |     4.2     
+224  |     Star Wars: The Force Awakens        |  action   | 2015 |     8.1     
+225  |       Star Wars: The Last Jedi          |  action   | 2017 |    NULL     
+228  |         Ali Wong: Baby Cobra            |   NULL    | 2016 |    NULL     
+229  |             The Big Sick                | romance   | 2017 |    NULL     
+230  |               Deadpool                  |  action   | 2016 |    NULL     
+```
+**(1)** Suppose we are in the mood for a good laugh or a good cry.                      
+Using `OR`, write a query that returns all movies that are either a romance or a comedy.
+```SQL
+SELECT * FROM movies
+WHERE  genre ='romance' OR genre ='comedy';
+```
+### 🟩 Output
+```SQL
+ id   |           name            |   genre   | year | imdb_rating
+------|----------------------------|-----------|------|--------------
+  51  |          Shrek 2           |  comedy   | 2004 |     7.2     
+  54  |      Finding Nemo          |  comedy   | 2003 |     8.2     
+  59  |            Up              |  comedy   | 2009 |     8.3     
+  60  |      Monsters, Inc.        |  comedy   | 2001 |     8.1     
+  61  |       Home Alone           |  comedy   | 1990 |     7.4     
+  65  |          Shrek             |  comedy   | 2001 |     7.9     
+  68  |     Despicable Me          |  comedy   | 2010 |     7.7     
+  70  |      Toy Story 2           |  comedy   | 1999 |     7.9     
+  71  |           Cars             |  comedy   | 2006 |     7.2     
+  78  |       Big Hero 6           |  comedy   | 2014 |     7.9     
+ 147  |          Titanic           | romance   | 1997 |     7.7     
+ 153  |  Beauty and the Beast      | romance   | 1991 |     8.0     
+ 156  |        Cinderella          | romance   | 2015 |     7.1     
+ 159  |          Twilight          | romance   | 2008 |     5.2     
+ 164  |      Pretty Woman          | romance   | 1990 |     6.9     
+ 167  | Something About Mary       | romance   | 1998 |     7.1     
+ 168  |            Elf             | romance   | 2003 |     6.9     
+ 170  |       Bridesmaids          | romance   | 2011 |     6.8     
+ 174  |     Sound of Music         | romance   | 1965 |     8.0     
+ 188  |   Slumdog Millionaire      | romance   | 2008 |     8.0     
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
