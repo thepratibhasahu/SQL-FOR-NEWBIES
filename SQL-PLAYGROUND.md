@@ -771,12 +771,132 @@ ORDER BY name;
 📝 If you run this code, the result will start with ‘1408’, ‘3 Men and a Baby’ and then A-Z.
 
 **(2.)** Your turn! Remove the previous query.                                 
-Write a new query that retrieves the name, year, and imdb_rating columns of all the movies, ordered highest to lowest by their ratings.
+Write a new query that retrieves the `name`, `year`, and `imdb_rating` columns of all the `movies`, ordered highest to lowest by their ratings.
 ```SQL
 SELECT name, year, imdb_rating FROM movies
 ORDER BY imdb_rating DESC;
 ```
+* We added `DESC` here because we want to sort it in a descending order.
+* If you run this query, the result will start with movies with an `IMDb rating` of `9.0` all the way down to `4.2`.
 ### 🟩 Output
+```SQL
+| No. | Name                                           | Year | IMDb Rating |
+| --- | ---------------------------------------------- | ---- | ----------- |
+| 1   | The Dark Knight                                | 2008 | 9.0         |
+| 2   | Inception                                      | 2010 | 8.8         |
+| 3   | Star Wars: Episode V - The Empire Strikes Back | 1980 | 8.8         |
+| 4   | Forrest Gump                                   | 1994 | 8.8         |
+| 5   | Star Wars                                      | 1977 | 8.7         |
+| 6   | Interstellar                                   | 2014 | 8.7         |
+| 7   | Inside Out                                     | 2015 | 8.6         |
+| 8   | Saving Private Ryan                            | 1998 | 8.6         |
+| 9   | Se7en                                          | 1995 | 8.6         |
+| 10  | The Dark Knight Rises                          | 2012 | 8.5         |
+| 11  | Runaway Bride                                  | 1999 | 5.4         |
+| 12  | Alvin and the Chipmunks                        | 2007 | 5.3         |
+| 13  | Scary Movie 2                                  | 2001 | 5.2         |
+| 14  | The Final Destination                          | 2009 | 5.2         |
+| 15  | Twilight                                       | 2008 | 5.2         |
+| 16  | The Haunting                                   | 1999 | 4.9         |
+| 17  | The Twilight Saga: Eclipse                     | 2010 | 4.9         |
+| 18  | The Twilight Saga: Breaking Dawn - Part 1      | 2011 | 4.9         |
+| 19  | The Twilight Saga: New Moon                    | 2009 | 4.6         |
+| 20  | Fifty Shades of Grey                           | 2015 | 4.2         |
+```
+# Limit
+We’ve been working with a fairly small table (fewer than 250 rows), but most SQL tables contain hundreds of thousands of records. In those situations, it becomes important to cap the number of rows in the result.
+
+For instance, imagine that we just want to see a few examples of records.
+```SQL
+SELECT * FROM movies
+LIMIT 10;
+```
+`LIMIT` is a clause that lets you specify the maximum number of rows the result set will have. This saves space on our screen and makes our queries run faster.
+
+Here, we specify that the result set can’t have more than 10 rows.
+
+`LIMIT` always goes at the very end of the query. Also, it is not supported in all SQL databases.
+
+**(1.)** Combining your knowledge of LIMIT and ORDER BY, write a query that returns the top 3 highest rated movies.   
+Select all the columns.
+```SQL
+SELECT * FROM movies
+ORDER BY imdb_rating DESC
+LIMIT 3;
+```
+### 🟩 Output
+```SQL
+| id | Name                                           | Genre  | Year | IMDb Rating |
+| -- | ---------------------------------------------- | ------ | ---- | ----------- |
+| 4  | The Dark Knight                                | Action | 2008 | 9.0         |
+| 30 | Inception                                      | Action | 2010 | 8.8         |
+| 32 | Star Wars: Episode V - The Empire Strikes Back | Action | 1980 | 8.8         |
+```
+# Case
+A `CASE` statement allows us to create different outputs (usually in the `SELECT` statement). It is SQL’s way of handling `if-then` logic.
+
+Suppose we want to condense the ratings in `movies` to three levels:
+
+* If the rating is above 8, then it is Fantastic.
+* If the rating is above 6, then it is Poorly Received.
+* Else, Avoid at All Costs.
+```SQL
+SELECT name,
+ CASE
+  WHEN imdb_rating > 8 THEN 'Fantastic'
+  WHEN imdb_rating > 6 THEN 'Poorly Received'
+  ELSE 'Avoid at All Costs'
+ END
+FROM movies;
+```
+* Each `WHEN` tests a condition and the following `THEN` gives us the string if the condition is true.
+* The `ELSE` gives us the string if all the above conditions are false.
+* The `CASE` statement must end with `END`.
+
+→ In the result, you have to scroll right because the column name is very long. To shorten it, we can rename the column to ‘Review’ using `AS`:
+```SQL
+SELECT name,
+ CASE
+  WHEN imdb_rating > 8 THEN 'Fantastic'
+  WHEN imdb_rating > 6 THEN 'Poorly Received'
+  ELSE 'Avoid at All Costs'
+ END AS 'Review'
+FROM movies;
+```
+**(1)** Let’s try one on your own.                              
+Select the `name` column and use a `CASE` statement to create the second column that is:                          
+* ‘Chill’ if `genre = 'romance'`
+* ‘Chill’ if `genre = 'comedy'`
+* ‘Intense’ in all other cases
+Optional: Rename the whole `CASE` statement to ‘Mood’ using `AS`.
+Give it your best shot! Check hint for the answer.
+```SQL
+SELECT name,
+ CASE
+  WHEN genre = 'romance' THEN 'Chill'
+  WHEN genre = 'comedy'  THEN 'Chill'
+  ELSE 'Intense'
+ END AS 'Mood'
+FROM movies;
+```
+### 🟩 Output
+```SQL
+| Name            | Mood    |
+| --------------- | ------- |
+| The Dark Knight | Intense |
+| Inception       | Intense |
+| Interstellar    | Intense |
+| Se7en           | Intense |
+| The Conjuring   | Intense |
+| Finding Nemo    | Chill   |
+| Despicable Me   | Chill   |
+| The Hangover    | Chill   |
+| Aladdin         | Chill   |
+| Shrek           | Chill   |
+```
+
+
+
 
 
 
