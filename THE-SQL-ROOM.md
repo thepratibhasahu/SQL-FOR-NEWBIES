@@ -59,5 +59,65 @@ SELECT COUNT(*) FROM table_name;
 ```
 Here, we want to count every row, so we pass `*` as an argument inside the parenthesis.
 
+**(1.)** Let’s count how many apps are in the table.                                             
+In the code editor, run:
+```SQL
+SELECT COUNT(*) FROM fake_apps;
+```
+### 🟩Output
+```SQL
+   COUNT(*)
+-------------
+    200
+```
+**(2.)** Add a `WHERE` clause in the previous query to count how many free apps are in the table.
+```sql
+SELECT COUNT(*) FROM fake_apps
+WHERE price = 0;
+```
+### 🟩Output
+```SQL
+   COUNT(*)
+-------------
+    73
+```
+# Sum
+SQL makes it easy to add all values in a particular column using `SUM()`.
+
+`SUM()` is a function that takes the name of a column as an argument and returns the sum of all the values in that column.
+
+What is the total number of `downloads` for all of the apps combined?
+```sql
+SELECT SUM(downloads) FROM fake_apps;
+```
+* This adds all values in the downloads column.
+### 🟩Output
+```SQL
+   SUM(downloads)
+-------------------
+     3322760
+```
+# Max / Min
+The `MAX()` and `MIN()` functions return the highest and lowest values in a column, respectively.
+
+How many downloads does the most popular app have?
+```sql
+SELECT MAX(downloads) FROM fake_apps;
+```
+### 🟩Output
+```SQL
+  MAX(downloads)
+-------------------
+     31090
+```
+The most popular app has 31,090 downloads!
+
+`MAX()` takes the name of a column as an argument and returns the largest value in that column. Here, we returned the largest value in the `downloads` column.
+
+`MIN()` works the same way but it does the exact opposite; it returns the smallest value.
+```sql
+**(1.)** What is the least number of times an app has been downloaded?
+In the code editor, type:
+
 
 
