@@ -48,4 +48,58 @@ SELECT COUNT(*) FROM startups;
 +----------+
      70
 ```
+**(3.)** We want to know the total value of all companies in this table.                         
+Calculate this by getting the `SUM()` of the `valuation` column.
+```sql
+SELECT SUM(valuation) FROM startups;
+```
+### 🟩Output
+```SQL
+  SUM(valuation) 
+-------------------
+   974455790000
+```
+**(4.)** What is the highest amount raised by a startup?                       
+Return the maximum amount of money `raised`.
+```sql
+SELECT MAX(raised) FROM startups;
+```
+### 🟩Output
+```SQL
+   MAX(raised) 
+-------------------
+   11500000000
+```
+**(5.)** Edit the query so that it returns the maximum amount of money `raised`, during ‘Seed’ stage.
+```sql
+SELECT MAX(raised) FROM startups
+WHERE stage = 'Seed';
+```
+### 🟩Output
+```SQL
+   MAX(raised) 
+-------------------
+    1800000
+```
+**(6.)** In what year was the oldest company on the list founded?
+```sql
+SELECT MIN(founded) FROM startups;
+```
+### 🟩Output
+```SQL
+   MIN(founded) 
+-------------------
+      1994
+```
+# Let's find out the valuations among different sectors:
+**(7.)** Return the average valuation.
+```sql
+SELECT AVG(valuation) FROM startups;
+```
+### 🟩Output
+```SQL
+  AVG(valuation) 
+-------------------
+ 15974685081.9672
+```
 
