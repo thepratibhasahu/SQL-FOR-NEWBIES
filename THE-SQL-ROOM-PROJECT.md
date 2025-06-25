@@ -92,7 +92,7 @@ SELECT MIN(founded) FROM startups;
       1994
 ```
 # Let's find out the valuations among different sectors:
-**(7.)** Return the average valuation.
+**(7.)** Return the average `valuation`.
 ```sql
 SELECT AVG(valuation) FROM startups;
 ```
@@ -102,7 +102,7 @@ SELECT AVG(valuation) FROM startups;
 -------------------
  15974685081.9672
 ```
-**(8.)** Return the average valuation, in each category.
+**(8.)** Return the average `valuation`, in each `category`.
 ```sql
 SELECT category, AVG(valuation) FROM startups
 GROUP BY category;
@@ -138,4 +138,168 @@ Venture Capital         3000000000.0
 Video Streaming         null
 Virtual Reality         2150000.0
 ```
+**( 9.)** Return the average `valuation`, in each `category`.                                
+Round the averages to two decimal places.
+```sql
+SELECT category, ROUND(AVG(valuation), 2) FROM startups
+GROUP BY category;
+```
+### 🟩Output
+```SQL
+category	            ROUND(AVG(valuation), 2)
+General                 4290000.00
+Algorithms              7600000.00
+Augmented Reality       8000000000.00
+Big Data Analytics      15000000.00
+Cloud Computing         95000000.00
+Customer Service        640000000.00
+Data Analytics          null
+E-commerce              60250000.00
+Education               2023800000.00
+Enterprise              38508333333.33
+Fashion                 3200000.00
+Fitness                 67500000.00
+Gambling                322000000.00
+Games                   1600000.00
+Health Care             380490000000.00
+Logistics               70000000.00
+Mobile                  9600000.00
+Nanotechnology          150000000.00
+Real Estate             20000000000.00
+SaaS                    401000000.00
+Security                6333333333.33
+Social                  82425833.33
+Technology              3100000000.00
+Travel                  12501250000.00
+Venture Capital         3000000000.00
+Video Streaming         null
+Virtual Reality         2150000.00
+```
+**(10.)** Return the average `valuation`, in each `category`.                      
+Round the averages to two decimal places.                                 
+Lastly, order the list from highest averages to lowest.
+```SQL
+SELECT category, ROUND(AVG(valuation), 2)
+FROM startups
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+### 🟩Output
+```SQL
+category              ROUND(AVG(valuation), 2)
+General               4290000.00
+Algorithms            7600000.00
+Augmented Reality     8000000000.00
+Big Data Analytics    15000000.00
+Cloud Computing       95000000.00
+Customer Service      640000000.00
+Data Analytics        null
+E-commerce            60250000.00
+Education             2023800000.00
+Enterprise            38508333333.33
+Fashion               3200000.00
+Fitness               67500000.00
+Gambling              322000000.00
+Games                 1600000.00
+Health Care           380490000000.00
+Logistics             70000000.00
+Mobile                9600000.00
+Nanotechnology        150000000.00
+Real Estate           20000000000.00
+SaaS                  401000000.00
+Security              6333333333.33
+Social                82425833.33
+Technology            3100000000.00
+Travel                12501250000.00
+Venture Capital       3000000000.00
+Video Streaming       null
+Virtual Reality       2150000.00
+```
+**(11.)** First, return the name of each `category` with the total number of companies that belong to it.
+```sql
+SELECT category, COUNT(*)
+FROM startups
+GROUP BY category;
+```
+### 🟩Output
+```SQL
+category              COUNT(*)
+General               3
+Algorithms            1
+Augmented Reality     1
+Big Data Analytics    1
+Cloud Computing       2
+Customer Service      1
+Data Analytics        1
+E-commerce            3
+Education             5
+Enterprise            3
+Fashion               2
+Fitness               3
+Gambling              1
+Games                 2
+Health Care           2
+Logistics             1
+Mobile                10
+Nanotechnology        1
+Real Estate           1
+SaaS                  2
+Security              3
+Social                12
+Technology            3
+Travel                2
+Venture Capital       1
+Video Streaming       1
+Virtual Reality       2
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
