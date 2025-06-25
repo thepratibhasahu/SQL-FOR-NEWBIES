@@ -252,6 +252,10 @@ Venture Capital       1
 Video Streaming       1
 Virtual Reality       2
 ```
+**(12.)** Next, filter the result to only include categories that have more than three companies in them.      
+What are the most competitive markets?
+```sql
+
 
 
 
