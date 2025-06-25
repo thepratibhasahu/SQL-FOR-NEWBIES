@@ -102,4 +102,40 @@ SELECT AVG(valuation) FROM startups;
 -------------------
  15974685081.9672
 ```
+**(8.)** Return the average valuation, in each category.
+```sql
+SELECT category, AVG(valuation) FROM startups
+GROUP BY category;
+```
+### 🟩Output
+```SQL
+**(category	            AVG(valuation)
+General                 4290000.0
+Algorithms              7600000.0
+Augmented Reality       8000000000.0
+Big Data Analytics      15000000.0
+Cloud Computing         95000000.0
+Customer Service        640000000.0
+Data Analytics          null
+E-commerce              60250000.0
+Education               2023800000.0
+Enterprise              38508333333.3333
+Fashion                 3200000.0
+Fitness                 67500000.0
+Gambling                322000000.0
+Games                   1600000.0
+Health Care             380490000000.0
+Logistics               70000000.0
+Mobile                  9600000.0
+Nanotechnology          150000000.0
+Real Estate             20000000000.0
+SaaS                    401000000.0
+Security                6333333333.33333
+Social                  82425833.3333333
+Technology              3100000000.0
+Travel                  12501250000.0
+Venture Capital         3000000000.0
+Video Streaming         null
+Virtual Reality         2150000.0
+```
 
