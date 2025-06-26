@@ -255,55 +255,69 @@ Virtual Reality       2
 **(12.)** Next, filter the result to only include categories that have more than three companies in them.      
 What are the most competitive markets?
 ```sql
+SELECT category, COUNT(*)
+FROM startups
+GROUP BY category
+HAVING COUNT(*) > 3
+ORDER BY 2 DESC;
+```
+### 🟩Output
+```SQL
+category	COUNT(*)
+Social	    12
+Mobile	    10
+Education	5
+```
+📝 you are filtering on a condition that has an aggregate function, you need to use `HAVING` instead of `WHERE`.        
+📝 If you want to go a step further, sort the result using `ORDER BY`.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Let's see if there's a difference in startups sizes among different locations:
+ 
+**(13.)** What is the average size of a startup in each `location`?
+```SQL
+SELECT location, AVG(employees)
+FROM startups
+GROUP BY location;
+```
+### 🟩Output
+```SQL
+location	        AVG(employees)
+Atlanta	            3.0
+Boulder	            3.0
+Brooklyn	        502.666666666667
+Chicago	            12.0
+Columbus	        2.0
+Denver	            12.0
+Fort Lauderdale	    500.0
+Irvine	            2.0
+Long Island	        5.0
+Los Angeles	        6.83333333333333
+Minneapolis	        20.0
+New Delhi	        250.0
+New York	        702.75
+Omaha	            65.0
+Palo Alto	        125.833333333333
+Paris	            30.0
+San Francisco	    1920.4
+Savannah	        6.0
+Scranton	        6.0
+Seattle	            9.66666666666667
+Silicon Valley	    1804.6
+Virginia Beach	    15.0
+Washington DC	    8.0
+```
+**(14.)** What is the average size of a startup in each `location`, with average sizes above 500?
+```sql
+SELECT location, AVG(employees)
+FROM startups
+GROUP BY location
+HAVING AVG(employees) > 500;
+```
+### 🟩Output
+```SQL
+location	        AVG(employees)
+Brooklyn	        502.666666666667
+New York	        702.75
+San Francisco	    1920.4
+Silicon Valley	    1804.6
+```
