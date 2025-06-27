@@ -143,4 +143,84 @@ SELECT CASE
   END AS 'Source'
 FROM hacker_news;
 ```
+### 🟩Output 
+```SQL
+Source
+------------
+Other
+Other
+GitHub
+Other
+New York Times
+Other
+Medium
+Other
+```
+📝 Note: If we want to be more accurate, we should use `url LIKE '%github%'` because some GitHub pages end with .io instead of .com.
+
+**(7.)** Next, build on the previous query:                         
+* Add a column for the number of stories from each URL using `COUNT()`.
+* Also, `GROUP BY` the `CASE` statement.
+* Remember that you can refer to a column in `GROUP BY` using a number.
+```SQL
+-- Which sites feed Hacker News?
+
+SELECT CASE
+   WHEN url LIKE '%github.com%' THEN 'GitHub'
+   WHEN url LIKE '%medium.com%' THEN 'Medium'
+   WHEN url LIKE '%nytimes.com%' THEN 'New York Times'
+   ELSE 'Other'
+  END AS 'Source',
+  COUNT(*)
+FROM hacker_news
+GROUP BY 1;
+```
+### 🟩Output 
+```SQL
+Source	        COUNT(*)
+GitHub	        23
+Medium	        12
+New York Times	13
+Other	        3952
+```
+# What's the best time to post a story?
+
+**(8.)** Every submitter wants their story to get a high score so that the story makes it to the front page, but…      
+* What’s the best time of the day to post a story on Hacker News?
+* Before we get started, let’s run this query and take a look at the `timestamp` column:
+```SQL
+SELECT timestamp
+FROM hacker_news
+LIMIT 10;
+```
+### 🟩Output 
+```SQL
+timestamp
+2014-01-27T17:31:13Z
+2011-10-23T18:46:40Z
+2016-02-28T06:26:56Z
+2014-08-12T22:13:10Z
+2013-03-06T12:28:02Z
+2011-04-16T21:04:23Z
+2014-03-18T21:44:46Z
+2012-11-19T11:54:38Z
+2016-11-04T13:55:30Z
+2016-07-02T22:54:47Z
+```
+* Notice that the values are formatted like:
+`2018-05-08T12:30:00Z`
+
+* If you ignore the T and Z, the format is:
+ `YYYY-MM-DD HH:MM:SS`
+
+📝 The `T` is just the separator between the date and time. You can read it as an abbreviation for ‘Time’.         
+📝 The `Z` stands for the Zero timezone, as it is offset by 0 from the Coordinated Universal Time (UTC).          
+📝 If you don’t look at the `T` and `Z`, it is easier to see the pattern in the `timestamp` column.
+
+  **(9.)**  SQLite comes with a `strftime()` function - a very powerful function that allows you to return a formatted date.
+  It takes two arguments:                                                                             
+  `strftime(format, column)`                                                                 
+  Let’s test this function out:
+  ```SQL
+
 
