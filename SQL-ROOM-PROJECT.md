@@ -33,4 +33,56 @@ LIMIT 5;
 | Stephen Fry hits out at ‘infantile’ culture of trigger words and safe spaces | 282   |
 | Reversal: Australian Govt picks ODF doc standard over Microsoft              | 191   |
 ```
+📝 Using `LIMIT` caps the number of rows in the result.                
+📝 It is a simple way to keep queries from taking too long to run if you are dealing with a big dataset.           
+📝 `ORDER BY` simply sorts the `score` column.
 
+# Hacker News Moderating
+
+**(2.)** Recent studies have found that online forums tend to be dominated by a small percentage of their users `(1-9-90 Rule)`.                                
+* Is this true of Hacker News?                          
+* Is a small percentage of Hacker News submitters taking the majority of the points?                   
+* First, find the total `score` of all the stories.
+```SQL
+SELECT SUM(score)
+FROM hacker_news;
+```
+### 🟩Output 
+```sql
++------------+
+| SUM(score) |
++------------+
+|    6366    |
++------------+
+```
+**(3.)** Next, we need to pinpoint the users who have accumulated a lot of points across their stories.         
+* Find the individual users who have gotten combined `scores` of more than 200, and their combined `scores`.           
+* `GROUP BY` and `HAVING` are needed!
+```SQL
+SELECT user, SUM(score)
+FROM hacker_news
+GROUP BY user
+HAVING SUM(score) > 200
+ORDER BY 2 DESC;
+```
+### 🟩Output 
+```SQL
++------------+------------+
+|   user     | SUM(score) |
++------------+------------+
+|  vxNsr     |    517     |
+|  amirkhella|    309     |
+|  dmmalam   |    304     |
+|  metafunctor|   282     |
++------------+------------+
+```
+📝 `HAVING` does not support aliases in the same way that `ORDER BY` does, so use the full column name.
+
+**(4.)** Then, we want to add these users’ `scores` together and divide by the total to get the percentage.               
+* Add their scores together and divide it by the total sum. Like so:
+```SQL
+SELECT (1.0 + 2.0 + 3.0) / 6.0;
+```
+* So, is Hacker News dominated by these users?
+```SQL
+```
