@@ -134,4 +134,13 @@ SELECT CASE
 FROM hacker_news;
 ```
 * Fill in the other `WHEN` statements and the `ELSE` statement.
+```sql
+SELECT CASE
+   WHEN url LIKE '%github.com%' THEN 'GitHub'
+   WHEN url LIKE '%medium.com%' THEN 'Medium'
+   WHEN url LIKE '%nytimes.com%' THEN 'New York Times'
+   ELSE 'Other'
+  END AS 'Source'
+FROM hacker_news;
+```
 
