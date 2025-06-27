@@ -85,4 +85,22 @@ SELECT (1.0 + 2.0 + 3.0) / 6.0;
 ```
 * So, is Hacker News dominated by these users?
 ```SQL
+SELECT (517 + 309 + 304 + 282) / 6366.0;
+```
+### 🟩Output 
+```SQL
++----------------------------------+
+| (517 + 309 + 304 + 282) / 6366.0 |
++----------------------------------+
+|          0.221803                |
++----------------------------------+
+```
+* That is ≈ 22%.
+* These 4 users have a combined 22% of the total scores in the table. Jeez!
+
+**(5.)** Oh no! While we are looking at the power users, some users are **rickrolling** — tricking readers into clicking on a link to a funny **video** and claiming that it links to information about coding.                 
+* The `url` of the video is:
+* `https://www.youtube.com/watch?v=dQw4w9WgXcQ`
+* How many times has each offending user posted this link?
+```SQL
 ```
