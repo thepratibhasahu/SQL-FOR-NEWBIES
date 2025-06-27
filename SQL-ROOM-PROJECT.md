@@ -103,4 +103,35 @@ SELECT (517 + 309 + 304 + 282) / 6366.0;
 * `https://www.youtube.com/watch?v=dQw4w9WgXcQ`
 * How many times has each offending user posted this link?
 ```SQL
+SELECT user,
+   COUNT(*)
+FROM hacker_news
+WHERE url LIKE '%watch?v=dQw4w9WgXcQ%'
+GROUP BY user
+ORDER BY COUNT(*) DESC;
 ```
+### 🟩Output 
+```SQL
++---------------+-----------+
+|     user      | COUNT(*)  |
++---------------+-----------+
+| sonnynomnom   |     2     |
+| scorpiosister |     1     |
++---------------+-----------+
+```
+**( 6.)** Hacker News stories are essentially links that take users to other websites.                  
+* Which of these sites feed Hacker News the most:
+* **GitHub**, **Medium**, or **New York** Times?
+* First, we want to categorize each story based on their source.
+* We can do this using a `CASE` statement:
+```SQL
+SELECT CASE
+   WHEN url LIKE '%github.com%' THEN 'GitHub'
+   -- WHEN statement here
+   -- WHEN statement here
+   -- ELSE statement here
+  END AS 'Source'
+FROM hacker_news;
+```
+* Fill in the other `WHEN` statements and the `ELSE` statement.
+
