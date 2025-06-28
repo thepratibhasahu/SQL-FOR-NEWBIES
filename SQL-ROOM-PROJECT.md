@@ -277,6 +277,7 @@ FROM hacker_news
 GROUP BY 1
 ORDER BY 2 DESC;
 ```
+### 🟩Output
 ```SQL
 strftime('%H', timestamp)	        AVG(score)	                  COUNT(*)
 18	                             27.0277777777778	                    266
@@ -312,6 +313,43 @@ Add a `WHERE` clause to filter out the `NULL` values in `timestamp`.
 Take a look at the result again:                                                   
 What are the best hours to post a story on Hacker News?
 ```SQL
+SELECT strftime('%H', timestamp) AS 'Hour', 
+   ROUND(AVG(score), 1) AS 'Average Score', 
+   COUNT(*) AS 'Number of Stories'
+FROM hacker_news
+WHERE timestamp IS NOT NULL
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+### 🟩Output
+```SQL
+| Hour | Average Score | Number of Stories |
+| ---- | ------------- | ----------------- |
+| 00   | 5.1           | 137               |
+| 01   | 4.4           | 146               |
+| 02   | 2.5           | 136               |
+| 03   | 6.9           | 134               |
+| 04   | 3.9           | 116               |
+| 05   | 3.6           | 125               |
+| 06   | 7.5           | 110               |
+| 07   | 21.3          | 104               |
+| 08   | 2.0           | 90                |
+| 09   | 11.1          | 119               |
+| 10   | 3.1           | 112               |
+| 11   | 8.3           | 113               |
+| 12   | 14.3          | 123               |
+| 13   | 5.7           | 164               |
+| 14   | 3.5           | 213               |
+| 15   | 9.5           | 268               |
+| 16   | 9.8           | 237               |
+| 17   | 8.9           | 215               |
+| 18   | 27.0          | 266               |
+| 19   | 20.4          | 238               |
+| 20   | 18.3          | 239               |
+| 21   | 3.3           | 234               |
+| 22   | 3.2           | 185               |
+| 23   | 8.4           | 170               |
+```
 
 
 
