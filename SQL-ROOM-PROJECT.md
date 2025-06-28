@@ -222,5 +222,99 @@ timestamp
   `strftime(format, column)`                                                                 
   Let’s test this function out:
   ```SQL
+SELECT timestamp,
+   strftime('%H', timestamp)
+FROM hacker_news
+GROUP BY 1
+LIMIT 20;
+```
+### 🟩Output 
+```SQL
+timestamp	          strftime('%H', timestamp)
+2007-03-16T20:52:19Z	    20
+2007-04-03T03:04:09Z	    03
+2007-05-01T03:11:17Z	    03
+2007-05-05T05:43:58Z	    05
+2007-05-11T05:48:53Z	    05
+2007-05-25T22:07:18Z	    22
+2007-06-08T08:44:50Z	    08
+2007-07-01T00:06:57Z	    00
+2007-07-27T16:47:00Z	    16
+2007-08-08T00:45:36Z	    00
+2007-08-12T07:35:25Z	    07
+2007-08-16T01:02:49Z	    01
+2007-08-24T18:17:32Z	    18
+2007-08-27T17:32:10Z	    17
+2007-09-11T16:27:49Z	    16
+2007-09-20T20:31:21Z	    20
+2007-09-22T08:21:17Z	    08
+2007-09-26T05:03:17Z	    05
+2007-10-08T21:28:06Z	    21
+```
+What do you think this does? Open the hint if you’d like to learn more.
+
+📝 This returns the hour, `HH`, of the `timestamp` column!
+
+For `strftime(__, timestamp)`:
+
+* `%Y` returns the year (YYYY)
+* `%m` returns the month (01-12)
+* `%d` returns the day of the month (1-31)
+* `%H` returns 24-hour clock (00-23)
+* `%M` returns the minute (00-59)
+* `%S` returns the seconds (00-59)
+* if `timestamp` format is `YYYY-MM-DD HH:MM:SS`.
+
+**(10.)** Okay, now we understand how `strftime()` works. Let’s write a query that returns three columns:             
+* The hours of the `timestamp`
+* The average `score` for each hour
+* The count of stories for each hour
+```sql
+SELECT strftime('%H', timestamp), 
+   AVG(score),
+   COUNT(*)
+FROM hacker_news
+GROUP BY 1
+ORDER BY 2 DESC;
+```
+```SQL
+strftime('%H', timestamp)	        AVG(score)	                  COUNT(*)
+18	                             27.0277777777778	                    266
+07	                             21.3333333333333	                    104
+19	                             20.4137931034483	                    238
+20	                             18.2758620689655	                    239
+12	                             14.3103448275862	                    123
+09	                                 11.125	                            119
+16                                   9.75555555555556	                    237
+15	                             9.49122807017544	                    268
+17	                             8.86046511627907	                    215
+23	                             8.43478260869565	                    170
+11	                             8.32258064516129	                    113
+06	                                   7.5	                            110
+03	                             6.91304347826087	                    134
+13	                             5.67647058823529	                    164
+00	                             5.09090909090909	                    137
+01	                             4.40740740740741	                    146
+04	                                  3.875	                            116
+05	                             3.55172413793103	                    125
+14	                             3.51515151515152	                    213
+21	                                   3.25	                            234
+22	                             3.20833333333333	                    185
+10	                             3.07894736842105	                    112
+02	                                   2.45	                            136
+08	                             2.04166666666667	                     90
+NULL                                      NULL                                6
+```
+**(11.)** Let’s edit a few things in the previous query:                                    
+Round the average `scores` `(ROUND())`.                                                 
+Rename the columns to make it more readable `(AS)`.                             
+Add a `WHERE` clause to filter out the `NULL` values in `timestamp`.                                       
+Take a look at the result again:                                                   
+What are the best hours to post a story on Hacker News?
+```SQL
+
+
+
+
 
 
