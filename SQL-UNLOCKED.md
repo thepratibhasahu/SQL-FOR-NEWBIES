@@ -33,4 +33,45 @@ So instead, we can split our data into three tables:
 
 📝 In this lesson, we’ll learn the `SQL commands` that will help us work with data that is stored in multiple tables.
 
+**(1.)** Examine these tables by pasting the following code into the editor:
+```SQL
+SELECT *
+FROM orders
+LIMIT 5;
 
+SELECT *
+FROM subscriptions
+LIMIT 5;
+
+SELECT * 
+FROM customers
+LIMIT 5;
+```
+```SQL
+ → Orders Table
+| order_id  | customer_id  | subscription_id  | purchase_date  |
+| --------- | ------------ | ---------------- | -------------- |
+| 1         | 3            | 2                | 01-10-2017     |
+| 2         | 2            | 4                | 01-09-2017     |
+| 3         | 3            | 4                | 01-26-2017     |
+| 4         | 9            | 9                | 01-04-2017     |
+| 5         | 7            | 5                | 01-25-2017     |
+
+→ Subscriptions Table
+| subscription_id  | description       | price_per_month   | subscription_length  |
+| ---------------- | ----------------- | ----------------- | -------------------- |
+| 1                | Politics Magazine | 10                | 12 months            |
+| 2                | Politics Magazine | 11                | 6 months             |
+| 3                | Politics Magazine | 12                | 3 months             |
+| 4                | Fashion Magazine  | 15                | 12 months            |
+| 5                | Fashion Magazine  | 17                | 6 months             |
+
+→  Customers Table
+| customer_id  | customer_name    | address          |
+| ------------ | ---------------- | ---------------- |
+| 1            | Allie Rahaim     | 123 Broadway     |
+| 2            | Jacquline Diddle | 456 Park Ave.    |
+| 3            | Lizabeth Letsche | 789 Main St.     |
+| 4            | Jessia Butman    | 1 Columbus Ave.  |
+| 5            | Inocencia Goyco  | 12 Amsterdam Ave |
+```
