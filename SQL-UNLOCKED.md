@@ -250,3 +250,7 @@ What if that wasn’t true?
 
 * Consider the following animation, which illustrates an inner join of two tables on `table1.c2 = table2.c2`:
 
+<img width="269" alt="image" src="https://github.com/user-attachments/assets/2be21eea-dd87-4c3e-b06b-35ca2b39ad5a" />
+<img width="267" alt="image" src="https://github.com/user-attachments/assets/a6bb6f65-6d5d-448b-bd57-722a16a547a0" />
+<img width="268" alt="image" src="https://github.com/user-attachments/assets/598adb1c-4162-4261-961c-368006cc6021" />
+
