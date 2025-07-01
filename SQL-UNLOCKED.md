@@ -254,3 +254,13 @@ What if that wasn’t true?
 <img width="267" alt="image" src="https://github.com/user-attachments/assets/a6bb6f65-6d5d-448b-bd57-722a16a547a0" />
 <img width="268" alt="image" src="https://github.com/user-attachments/assets/598adb1c-4162-4261-961c-368006cc6021" />
 
+The first and last rows have matching values of `c2`. The middle rows do not match. The final result has all values from the first and last rows but does not include the non-matching middle row.
+
+**(1.)** Suppose we are working for The Codecademy Times, a newspaper with two types of subscriptions:          
+* print newspaper
+* online articles
+
+Some users subscribe to just the newspaper, some subscribe to just the online edition, and some subscribe to both.    
+There is a `newspaper` table that contains information about the newspaper subscribers.                 
+Count the number of subscribers who get a print newspaper using `COUNT()`.
+
