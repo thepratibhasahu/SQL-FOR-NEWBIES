@@ -159,7 +159,7 @@ JOIN subscriptions
 ```
 ### 🟩Output
 ```sql
-| order\_id | customer\_id | subscription\_id | purchase\_date | description       | price\_per\_month | subscription\_length |
+| order_id  | customer_id  | subscription_id  | purchase_date  | description       | price_per_month   | subscription_length  |
 | --------- | ------------ | ---------------- | -------------- | ----------------- | ----------------- | -------------------- |
 | 1         | 3            | 2                | 01-10-2017     | Politics Magazine | 11                | 6 months             |
 | 2         | 2            | 4                | 01-9-2017      | Fashion Magazine  | 15                | 12 months            |
@@ -184,3 +184,56 @@ JOIN subscriptions
 ```
 **(2.)** Don’t remove the previous query.                                                  
 Add a second query after your first one that only selects rows from the join where `description` is equal to ‘Fashion Magazine’.
+```sql
+-- Checkpoint 1
+
+SELECT *
+FROM orders
+JOIN subscriptions
+  ON orders.subscription_id = subscriptions.subscription_id;
+
+-- Checkpoint 2
+
+SELECT *
+FROM orders
+JOIN subscriptions
+  ON orders.subscription_id = subscriptions.subscription_id
+WHERE subscriptions.description = 'Fashion Magazine';
+```
+### 🟩Output
+```sql
+| order_id  | customer_id  | subscription_id  | purchase_date  | description       | price_per_month   | subscription_length  |
+| --------- | ------------ | ---------------- | -------------- | ----------------- | ----------------- | -------------------- |
+| 1         | 3            | 2                | 01-10-2017     | Politics Magazine | 11                | 6 months             |
+| 2         | 2            | 4                | 01-9-2017      | Fashion Magazine  | 15                | 12 months            |
+| 3         | 3            | 4                | 01-26-2017     | Fashion Magazine  | 15                | 12 months            |
+| 4         | 9            | 9                | 01-4-2017      | Sports Magazine   | 13                | 3 months             |
+| 5         | 7            | 5                | 01-25-2017     | Fashion Magazine  | 17                | 6 months             |
+| 6         | 8            | 2                | 01-18-2017     | Politics Magazine | 11                | 6 months             |
+| 7         | 5            | 8                | 01-11-2017     | Sports Magazine   | 12                | 6 months             |
+| 8         | 9            | 5                | 01-26-2017     | Fashion Magazine  | 17                | 6 months             |
+| 9         | 4            | 4                | 01-25-2017     | Fashion Magazine  | 15                | 12 months            |
+| 10        | 1            | 7                | 01-26-2017     | Sports Magazine   | 11                | 12 months            |
+| 11        | 5            | 4                | 01-7-2017      | Fashion Magazine  | 15                | 12 months            |
+| 12        | 3            | 2                | 01-21-2017     | Politics Magazine | 11                | 6 months             |
+| 13        | 3            | 5                | 01-3-2017      | Fashion Magazine  | 17                | 6 months             |
+| 14        | 6            | 5                | 01-22-2017     | Fashion Magazine  | 17                | 6 months             |
+| 15        | 1            | 2                | 01-6-2017      | Politics Magazine | 11                | 6 months             |
+| 16        | 1            | 2                | 01-11-2017     | Politics Magazine | 11                | 6 months             |
+| 17        | 3            | 6                | 01-17-2017     | Fashion Magazine  | 19                | 3 months             |
+| 18        | 3            | 8                | 01-29-2017     | Sports Magazine   | 12                | 6 months             |
+| 19        | 4            | 9                | 01-3-2017      | Sports Magazine   | 13                | 3 months             |
+| 20        | 1            | 7                | 01-24-2017     | Sports Magazine   | 11                | 12 months            |
+
+| order_id  | customer_id  | subscription_id  | purchase_date  | description      | price_per_month   | subscription_length  |
+| --------- | ------------ | ---------------- | -------------- | ---------------- | ----------------- | -------------------- |
+| 2         | 2            | 4                | 01-9-2017      | Fashion Magazine | 15                | 12 months            |
+| 3         | 3            | 4                | 01-26-2017     | Fashion Magazine | 15                | 12 months            |
+| 9         | 4            | 4                | 01-25-2017     | Fashion Magazine | 15                | 12 months            |
+| 11        | 5            | 4                | 01-7-2017      | Fashion Magazine | 15                | 12 months            |
+| 5         | 7            | 5                | 01-25-2017     | Fashion Magazine | 17                | 6 months             |
+| 8         | 9            | 5                | 01-26-2017     | Fashion Magazine | 17                | 6 months             |
+| 13        | 3            | 5                | 01-3-2017      | Fashion Magazine | 17                | 6 months             |
+| 14        | 6            | 5                | 01-22-2017     | Fashion Magazine | 17                | 6 months             |
+| 17        | 3            | 6                | 01-17-2017     | Fashion Magazine | 19                | 3 months             |
+```
