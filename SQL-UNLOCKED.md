@@ -47,6 +47,7 @@ SELECT *
 FROM customers
 LIMIT 5;
 ```
+### 🟩Output 
 ```SQL
  → Orders Table
 | order_id  | customer_id  | subscription_id  | purchase_date  |
@@ -106,3 +107,80 @@ Be sure to capitalize it the same as in the table.
 ```sql
 Answer: Sports Magazine
 ```
+
+**(2.)** Using the tables displayed, what is the `customer_name` of the customer in `order_id` 3?                  
+Type your answer on line 2 of the code editor.                                 
+Be sure to capitalize it the same as in the table.
+
+![Screenshot 2025-06-29 222912](https://github.com/user-attachments/assets/587d8152-9265-4b28-a9af-309c3efa70d3)
+![Screenshot 2025-06-29 222948](https://github.com/user-attachments/assets/fef9ab55-85c1-4806-8d3b-bad9a46d762c)
+![Screenshot 2025-06-29 223024](https://github.com/user-attachments/assets/9136ce29-dd82-4eca-9eee-0f1e2e4832f8)
+
+```sql
+Answer: Joe Schmo
+```
+# Combining Tables with SQL
+Combining tables manually is time-consuming. Luckily, SQL gives us an easy sequence for this: it’s called a `JOIN`.
+
+If we want to combine `orders` and `customers`, we would type:
+```sql
+SELECT *
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+```
+→ Let’s break down this command:
+
+**1.** The first line selects all columns from our combined table. If we only want to select certain columns, we can specify which ones we want.
+
+**2.** The second line specifies the first table that we want to look in, `orders`.
+
+**3.** The third line uses `JOIN` to say that we want to combine information from `orders` with `customers`.
+
+**4.** The fourth line tells us how to combine the two tables. We want to match `orders` table’s `customer_id` column with `customers` table’s `customer_id` column.
+
+Because column names are often repeated across multiple tables, we use the syntax `table_name.column_name` to be sure that our requests for columns are unambiguous. In our example, we use this syntax in the `ON` statement, but we will also use it in the `SELECT` or any other statement where we refer to column names.
+
+For example: Instead of selecting all the columns using `*`, if we only wanted to select `orders` table’s `order_id` column and `customers` table’s `customer_name` column, we could use the following query:
+```sql
+SELECT orders.order_id,
+   customers.customer_name
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+```
+**(1.)** Join `orders` table and `subscriptions` table and select all columns.                    
+Make sure to join on the `subscription_id` column.
+```sql
+SELECT *
+FROM orders
+JOIN subscriptions
+  ON orders.subscription_id = subscriptions.subscription_id;
+```
+### 🟩Output
+```sql
+| order\_id | customer\_id | subscription\_id | purchase\_date | description       | price\_per\_month | subscription\_length |
+| --------- | ------------ | ---------------- | -------------- | ----------------- | ----------------- | -------------------- |
+| 1         | 3            | 2                | 01-10-2017     | Politics Magazine | 11                | 6 months             |
+| 2         | 2            | 4                | 01-9-2017      | Fashion Magazine  | 15                | 12 months            |
+| 3         | 3            | 4                | 01-26-2017     | Fashion Magazine  | 15                | 12 months            |
+| 4         | 9            | 9                | 01-4-2017      | Sports Magazine   | 13                | 3 months             |
+| 5         | 7            | 5                | 01-25-2017     | Fashion Magazine  | 17                | 6 months             |
+| 6         | 8            | 2                | 01-18-2017     | Politics Magazine | 11                | 6 months             |
+| 7         | 5            | 8                | 01-11-2017     | Sports Magazine   | 12                | 6 months             |
+| 8         | 9            | 5                | 01-26-2017     | Fashion Magazine  | 17                | 6 months             |
+| 9         | 4            | 4                | 01-25-2017     | Fashion Magazine  | 15                | 12 months            |
+| 10        | 1            | 7                | 01-26-2017     | Sports Magazine   | 11                | 12 months            |
+| 11        | 5            | 4                | 01-7-2017      | Fashion Magazine  | 15                | 12 months            |
+| 12        | 3            | 2                | 01-21-2017     | Politics Magazine | 11                | 6 months             |
+| 13        | 3            | 5                | 01-3-2017      | Fashion Magazine  | 17                | 6 months             |
+| 14        | 6            | 5                | 01-22-2017     | Fashion Magazine  | 17                | 6 months             |
+| 15        | 1            | 2                | 01-6-2017      | Politics Magazine | 11                | 6 months             |
+| 16        | 1            | 2                | 01-11-2017     | Politics Magazine | 11                | 6 months             |
+| 17        | 3            | 6                | 01-17-2017     | Fashion Magazine  | 19                | 3 months             |
+| 18        | 3            | 8                | 01-29-2017     | Sports Magazine   | 12                | 6 months             |
+| 19        | 4            | 9                | 01-3-2017      | Sports Magazine   | 13                | 3 months             |
+| 20        | 1            | 7                | 01-24-2017     | Sports Magazine   | 11                | 12 months            |
+```
+**(2.)** Don’t remove the previous query.                                                  
+Add a second query after your first one that only selects rows from the join where `description` is equal to ‘Fashion Magazine’.
