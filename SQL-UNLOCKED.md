@@ -237,3 +237,16 @@ WHERE subscriptions.description = 'Fashion Magazine';
 | 14        | 6            | 5                | 01-22-2017     | Fashion Magazine | 17                | 6 months             |
 | 17        | 3            | 6                | 01-17-2017     | Fashion Magazine | 19                | 3 months             |
 ```
+📝 The `WHERE` clause goes after the `JOIN`!
+
+# Inner Joins
+Let’s revisit how we joined `orders` and `customers`. For every possible value of `customer_id` in `orders`, there was a corresponding row of `customers` with the same `customer_id`.
+
+What if that wasn’t true?
+
+* For instance, imagine that our `customers` table was out of date, and was missing any information on customer 11. If that customer had an order in `orders`, what would happen when we joined the tables?
+
+* When we perform a simple `JOIN` (often called an inner join) our result only includes rows that match our `ON` condition.
+
+* Consider the following animation, which illustrates an inner join of two tables on `table1.c2 = table2.c2`:
+
