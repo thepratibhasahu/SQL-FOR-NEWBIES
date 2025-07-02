@@ -263,4 +263,57 @@ The first and last rows have matching values of `c2`. The middle rows do not mat
 Some users subscribe to just the newspaper, some subscribe to just the online edition, and some subscribe to both.    
 There is a `newspaper` table that contains information about the newspaper subscribers.                 
 Count the number of subscribers who get a print newspaper using `COUNT()`.
+```SQL
+SELECT COUNT(*)
+FROM newspaper;
+```
+### 🟩Output
+```SQL
+  COUNT(*)
+------------
+    60
+```
+**(2.)** Don’t remove your previous query.                                  
+There is also an `online` table that contains information about the online subscribers.                     
+Count the number of subscribers who get an online newspaper using `COUNT()`.
+```sql
+SELECT COUNT(*) FROM newspaper;
 
+SELECT COUNT(*) FROM online;
+```
+### 🟩Output
+```SQL
+  COUNT(*)
+------------
+    60
+
+ COUNT(*)
+------------
+    65
+```
+**(3.)** Don’t remove your previous queries.                            
+Join `newspaper` table and `online` table on their `id` columns (the unique ID of the subscriber).              
+How many rows are in this table?
+```SQL
+SELECT COUNT(*) FROM newspaper;
+
+SELECT COUNT(*) FROM online;
+
+SELECT COUNT(*) FROM newspaper
+JOIN online 
+ON newspaper.id = online.id;
+```
+### 🟩Output
+```SQL
+  COUNT(*)
+------------
+    60
+
+ COUNT(*)
+------------
+    65
+
+ COUNT(*)
+------------
+    50
+```
