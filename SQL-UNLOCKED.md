@@ -439,6 +439,19 @@ id_1     first_name_1  last_name_1   email_1                        start_month_
 12575    Loni          Manchester    LoniManchester25@gsnail.com     5              8            12575    Loni          Manchester     LoniManchester25@gsnail.com    5              8
 56665    Maple         Yonts         MY2659@coldmail.com             6              8            56665    Maple         Yonts         MY2659@coldmail.com             6              8
 58002    Brooke        Tandetzke     BT7427@gsnail.com               6              7            NULL     NULL          NULL           NULL                           NULL           NULL    |
+
+id_1     first_name_1  last_name_1   email_1                        start_month_1  end_month_1   id_2  first_name_2  last_name_2   email_2 start_month_2  end_month_2
+71778    Ouida         Pardini       Ouida.Pardini@gsnail.com        2              6            NULL   NULL          NULL          NULL     NULL           NULL
+79652    Esteban       Pitner        Esteban.Pitner@gsnail.com       2              4            NULL   NULL          NULL          NULL     NULL           NULL
+46343    Cecelia       Filipponi     CFilipponi1977@gsnail.com       5              8            NULL   NULL          NULL          NULL     NULL           NULL
+58002    Brooke        Tandetzke     BT7427@gsnail.com               6              7            NULL   NULL          NULL          NULL     NULL           NULL
+71091    Michael       Saffer        MSaffer1989@inlook.com          6              7            NULL   NULL          NULL          NULL     NULL           NULL
+86812    Dong          Mckendree     Dong.Mckendree@inlook.com       8              10           NULL   NULL          NULL          NULL     NULL           NULL
+44022    Adeline       Hazinski      AHazinski1991@inlook.com        8              12           NULL   NULL          NULL          NULL     NULL           NULL
+19136    Vernetta      Manda         VernettaManda60@coldmail.com    8              10           NULL   NULL          NULL          NULL     NULL           NULL
+48666    Shona         Lyssy         Shona.Lyssy@gsnail.com          9              12           NULL   NULL          NULL          NULL     NULL           NULL
+85799    Vicenta       Bousley       Vicenta.Bousley@gsnail.com      11             12           NULL   NULL          NULL          NULL     NULL           NULL
+
 ```
 
 
