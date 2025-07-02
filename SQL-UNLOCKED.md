@@ -353,68 +353,38 @@ LEFT JOIN online
 ```
 ### 🟩Output
 ```SQL
-| id    | first_name  | last_name   | email                                                                     | start_month  | end_month  |
-| ----- | ----------- | ----------- | ------------------------------------------------------------------------- | ------------ | ---------- |
-| 21253 | Vinnie      | Sagaser     | [Vinnie.Sagaser@yoohoo.com](mailto:Vinnie.Sagaser@yoohoo.com)             | 1            | 5          |
-| 39075 | Francesco   | Maddron     | [FrancescoMaddron81@gsnail.com](mailto:FrancescoMaddron81@gsnail.com)     | 1            | 5          |
-| 30648 | Hellen      | Broadwater  | [HBroadwater1992@gsnail.com](mailto:HBroadwater1992@gsnail.com)           | 2            | 3          |
-| 71778 | Ouida       | Pardini     | [Ouida.Pardini@gsnail.com](mailto:Ouida.Pardini@gsnail.com)               | 2            | 6          |
-| 32436 | Wenona      | Tankson     | [WTankson1989@gsnail.com](mailto:WTankson1989@gsnail.com)                 | 2            | 6          |
-| 55580 | Clora       | Werking     | [CWerking1996@gsnail.com](mailto:CWerking1996@gsnail.com)                 | 2            | 5          |
-| 79652 | Esteban     | Pitner      | [Esteban.Pitner@gsnail.com](mailto:Esteban.Pitner@gsnail.com)             | 2            | 4          |
-| 11322 | Carmel      | Deasis      | [CD3012@gsnail.com](mailto:CD3012@gsnail.com)                             | 2            | 6          |
-| 73893 | Jessi       | Vinson      | [JessiVinson65@gsnail.com](mailto:JessiVinson65@gsnail.com)               | 2            | 6          |
-| 84750 | Ayana       | Hodapp      | [AHodapp1976@coldmail.com](mailto:AHodapp1976@coldmail.com)               | 3            | 6          |
-| 34187 | Francoise   | Feliberty   | [FFeliberty1984@inlook.com](mailto:FFeliberty1984@inlook.com)             | 3            | 7          |
-| 82566 | Dusty       | Morrical    | [DMorrical1977@gsnail.com](mailto:DMorrical1977@gsnail.com)               | 3            | 7          |
-| 31446 | Collin      | Dobos       | [CollinDobos57@coldmail.com](mailto:CollinDobos57@coldmail.com)           | 3            | 5          |
-| 23496 | Fredia      | Bi          | [Fredia.Bi@gsnail.com](mailto:Fredia.Bi@gsnail.com)                       | 4            | 8          |
-| 34664 | Troy        | Underwood   | [Troy.Underwood@gsnail.com](mailto:Troy.Underwood@gsnail.com)             | 4            | 6          |
-| 58869 | Cordia      | Schingeck   | [CordiaSchingeck82@gsnail.com](mailto:CordiaSchingeck82@gsnail.com)       | 4            | 6          |
-| 96977 | Peter       | Haddaway    | [Peter.Haddaway@gsnail.com](mailto:Peter.Haddaway@gsnail.com)             | 4            | 8          |
-| 17873 | Vilma       | Colaizzi    | [VColaizzi1973@gsnail.com](mailto:VColaizzi1973@gsnail.com)               | 4            | 5          |
-| 49633 | Lane        | Dittman     | [LaneDittman80@gsnail.com](mailto:LaneDittman80@gsnail.com)               | 5            | 9          |
-| 37471 | Sharice     | Mcmindes    | [SM2234@gsnail.com](mailto:SM2234@gsnail.com)                             | 5            | 6          |
-| 14227 | Grady       | Antinore    | [Grady.Antinore@gsnail.com](mailto:Grady.Antinore@gsnail.com)             | 5            | 7          |
-| 90240 | Mandy       | Ferber      | [Mandy.Ferber@gsnail.com](mailto:Mandy.Ferber@gsnail.com)                 | 5            | 9          |
-| 22237 | Olimpia     | Padden      | [OP5814@inlook.com](mailto:OP5814@inlook.com)                             | 5            | 6          |
-| 84308 | Mechelle    | Mcgarrell   | [MM4920@gsnail.com](mailto:MM4920@gsnail.com)                             | 5            | 6          |
-| 46343 | Cecelia     | Filipponi   | [CFilipponi1977@gsnail.com](mailto:CFilipponi1977@gsnail.com)             | NULL         | NULL       |
-| 17951 | Latasha     | Pasket      | [Latasha.Pasket@gsnail.com](mailto:Latasha.Pasket@gsnail.com)             | 5            | 6          |
-| 32353 | Nichole     | Vogenthaler | [NicholeVogenthaler58@gsnail.com](mailto:NicholeVogenthaler58@gsnail.com) | 5            | 6          |
-| 59400 | Hiedi       | Dwight      | [Hiedi.Dwight@gsnail.com](mailto:Hiedi.Dwight@gsnail.com)                 | 5            | 6          |
-| 12575 | Loni        | Manchester  | [LoniManchester25@gsnail.com](mailto:LoniManchester25@gsnail.com)         | 5            | 8          |
-| 56665 | Maple       | Yonts       | [MY2659@coldmail.com](mailto:MY2659@coldmail.com)                         | 6            | 8          |
-| 58002 | Brooke      | Tandetzke   | [BT7427@gsnail.com](mailto:BT7427@gsnail.com)                             | NULL         | NULL       |
-| 72688 | Josiah      | Rosseter    | [Josiah.Rosseter@gsnail.com](mailto:Josiah.Rosseter@gsnail.com)           | 6            | 10         |
-| 50328 | Amber       | Berrian     | [AB8272@gsnail.com](mailto:AB8272@gsnail.com)                             | 6            | 8          |
-| 80644 | Meghan      | Hoobler     | [Meghan.Hoobler@inlook.com](mailto:Meghan.Hoobler@inlook.com)             | 6            | 9          |
-| 77961 | Madelene    | Gittelman   | [MGittelman1988@gsnail.com](mailto:MGittelman1988@gsnail.com)             | 6            | 8          |
-| 71091 | Michael     | Saffer      | [MSaffer1989@inlook.com](mailto:MSaffer1989@inlook.com)                   | NULL         | NULL       |
-| 36414 | Stacey      | Gude        | [StaceyGude80@gsnail.com](mailto:StaceyGude80@gsnail.com)                 | 6            | 10         |
-| 37588 | Demetra     | Pesek       | [Demetra.Pesek@gsnail.com](mailto:Demetra.Pesek@gsnail.com)               | 7            | 9          |
-| 99416 | Gisela      | Sanfilippo  | [GSanfilippo1971@gsnail.com](mailto:GSanfilippo1971@gsnail.com)           | 7            | 11         |
-| 22195 | Onita       | Butay       | [Onita.Butay@gsnail.com](mailto:Onita.Butay@gsnail.com)                   | 7            | 11         |
-| 86812 | Dong        | Mckendree   | [Dong.Mckendree@inlook.com](mailto:Dong.Mckendree@inlook.com)             | NULL         | NULL       |
-| 44022 | Adeline     | Hazinski    | [AHazinski1991@inlook.com](mailto:AHazinski1991@inlook.com)               | NULL         | NULL       |
-| 20801 | Janita      | Hodgson     | [JanitaHodgson94@gsnail.com](mailto:JanitaHodgson94@gsnail.com)           | 8            | 12         |
-| 11660 | Layne       | Tavella     | [LayneTavella12@coldmail.com](mailto:LayneTavella12@coldmail.com)         | 8            | 9          |
-| 92017 | Vallie      | Kirnon      | [VK7227@coldmail.com](mailto:VK7227@coldmail.com)                         | 8            | 9          |
-| 58418 | Alvera      | Fassino     | [AFassino1978@gsnail.com](mailto:AFassino1978@gsnail.com)                 | 8            | 10         |
-| 19136 | Vernetta    | Manda       | [VernettaManda60@coldmail.com](mailto:VernettaManda60@coldmail.com)       | NULL         | NULL       |
-| 16299 | Dortha      | Shigemi     | [DorthaShigemi21@gsnail.com](mailto:DorthaShigemi21@gsnail.com)           | 9            | 10         |
-| 44402 | Laci        | Stein       | [Laci.Stein@inlook.com](mailto:Laci.Stein@inlook.com)                     | 9            | 11         |
-| 48666 | Shona       | Lyssy       | [Shona.Lyssy@gsnail.com](mailto:Shona.Lyssy@gsnail.com)                   | NULL         | NULL       |
-| 42358 | Hue         | Schoenmaker | [HueSchoenmaker71@gsnail.com](mailto:HueSchoenmaker71@gsnail.com)         | 9            | 12         |
-| 99734 | Rema        | Iacobucci   | [RemaIacobucci20@gsnail.com](mailto:RemaIacobucci20@gsnail.com)           | 9            | 12         |
-| 88849 | Blanca      | Merdian     | [BlancaMerdian51@gsnail.com](mailto:BlancaMerdian51@gsnail.com)           | 9            | 10         |
-| 65878 | Madie       | Armer       | [MadieArmer54@gsnail.com](mailto:MadieArmer54@gsnail.com)                 | 10           | 11         |
-| 63145 | Tosha       | Cochrane    | [Tosha.Cochrane@gsnail.com](mailto:Tosha.Cochrane@gsnail.com)             | 10           | 12         |
-| 14022 | Elisabeth   | Fredeen     | [EF3903@gsnail.com](mailto:EF3903@gsnail.com)                             | 10           | 11         |
-| 40508 | Ha          | Waggett     | [HW6229@gsnail.com](mailto:HW6229@gsnail.com)                             | 10           | 12         |
-| 59945 | Gail        | Deloatch    | [GailDeloatch2@yoohoo.com](mailto:GailDeloatch2@yoohoo.com)               | 11           | 12         |
-| 28930 | Marci       | Matterson   | [MMatterson1972@gsnail.com](mailto:MMatterson1972@gsnail.com)             | 11           | 12         |
-| 85799 | Vicenta     | Bousley     | [Vicenta.Bousley@gsnail.com](mailto:Vicenta.Bousley@gsnail.com)           | NULL         | NULL       |
+id_1     first_name_1  last_name_1   email_1                        start_month_1  end_month_1   id_2    first_name_2  last_name_2    email_2                        start_month_2  end_month_2
+21253    Vinnie        Sagaser       Vinnie.Sagaser@yoohoo.com       1              5            21253    Vinnie        Sagaser       Vinnie.Sagaser@yoohoo.com       1              5
+39075    Francesco     Maddron       FrancescoMaddron81@gsnail.com   1              5            39075    Francesco     Maddron       FrancescoMaddron81@gsnail.com   1              5
+30648    Hellen        Broadwater    HBroadwater1992@gsnail.com      2              3            30648    Hellen        Broadwater    HBroadwater1992@gsnail.com      2              3
+71778    Ouida         Pardini       Ouida.Pardini@gsnail.com        2              6            NULL     NULL          NULL           NULL                          NULL           NULL
+32436    Wenona        Tankson       WTankson1989@gsnail.com         2              6            32436    Wenona        Tankson       WTankson1989@gsnail.com         2              6
+55580    Clora         Werking       CWerking1996@gsnail.com         2              5            55580    Clora         Werking       CWerking1996@gsnail.com         2              5
+79652    Esteban       Pitner        Esteban.Pitner@gsnail.com       2              4            NULL     NULL          NULL           NULL                          NULL           NULL
+11322    Carmel        Deasis        CD3012@gsnail.com               2              6            11322    Carmel        Deasis        CD3012@gsnail.com               2              6
+73893    Jessi         Vinson        JessiVinson65@gsnail.com        2              6            73893    Jessi         Vinson        JessiVinson65@gsnail.com        2              6
+84750    Ayana         Hodapp        AHodapp1976@coldmail.com        3              6            84750    Ayana         Hodapp        AHodapp1976@coldmail.com        3              6
+34187    Francoise     Feliberty     FFeliberty1984@inlook.com       3              7            34187    Francoise     Feliberty     FFeliberty1984@inlook.com       3              7
+82566    Dusty         Morrical      DMorrical1977@gsnail.com        3              7            82566    Dusty         Morrical      DMorrical1977@gsnail.com        3              7
+31446    Collin        Dobos         CollinDobos57@coldmail.com      3              5            31446    Collin        Dobos         CollinDobos57@coldmail.com      3              5
+23496    Fredia        Bi            Fredia.Bi@gsnail.com            4              8            23496    Fredia        Bi            Fredia.Bi@gsnail.com            4              8
+34664    Troy          Underwood     Troy.Underwood@gsnail.com       4              6            34664    Troy          Underwood     Troy.Underwood@gsnail.com       4              6
+58869    Cordia        Schingeck     CordiaSchingeck82@gsnail.com    4              6            58869    Cordia        Schingeck     CordiaSchingeck82@gsnail.com    4              6
+96977    Peter         Haddaway      Peter.Haddaway@gsnail.com       4              8            96977    Peter         Haddaway      Peter.Haddaway@gsnail.com       4              8
+17873    Vilma         Colaizzi      VColaizzi1973@gsnail.com        4              5            17873    Vilma         Colaizzi      VColaizzi1973@gsnail.com        4              5
+49633    Lane          Dittman       LaneDittman80@gsnail.com        5              9            49633    Lane          Dittman       LaneDittman80@gsnail.com        5              9
+37471    Sharice       Mcmindes      SM2234@gsnail.com               5              6            37471    Sharice       Mcmindes      SM2234@gsnail.com               5              6
+14227    Grady         Antinore      Grady.Antinore@gsnail.com       5              7            14227    Grady         Antinore      Grady.Antinore@gsnail.com       5              7
+90240    Mandy         Ferber        Mandy.Ferber@gsnail.com         5              9            90240    Mandy         Ferber        Mandy.Ferber@gsnail.com         5              9
+22237    Olimpia       Padden        OP5814@inlook.com               5              6            22237    Olimpia       Padden        OP5814@inlook.com               5              6
+84308    Mechelle      Mcgarrell     MM4920@gsnail.com               5              6            84308    Mechelle      Mcgarrell     MM4920@gsnail.com               5              6
+46343    Cecelia       Filipponi     CFilipponi1977@gsnail.com       5              8            NULL     NULL          NULL           NULL                           NULL           NULL
+17951    Latasha       Pasket        Latasha.Pasket@gsnail.com       5              6            17951    Latasha       Pasket        Latasha.Pasket@gsnail.com       5              6
+32353    Nichole       Vogenthaler   NicholeVogenthaler58@gsnail.com 5              6            32353    Nichole       Vogenthaler   NicholeVogenthaler58@gsnail.com 5              6
+59400    Hiedi         Dwight        Hiedi.Dwight@gsnail.com         5              6            59400    Hiedi         Dwight        Hiedi.Dwight@gsnail.com         5              6
+12575    Loni          Manchester    LoniManchester25@gsnail.com     5              8            12575    Loni          Manchester     LoniManchester25@gsnail.com    5              8
+56665    Maple         Yonts         MY2659@coldmail.com             6              8            56665    Maple         Yonts         MY2659@coldmail.com             6              8
+58002    Brooke        Tandetzke     BT7427@gsnail.com               6              7            NULL     NULL          NULL           NULL                           NULL           NULL    |
 ```
 **(2.)** Don’t remove your previous query.                                       
 In order to find which users do not subscribe to the online edition, we need to add a `WHERE` clause.                      
@@ -437,79 +407,39 @@ LEFT JOIN online
 ```
 ### 🟩Output
 ```SQL
-id	first_name	last_name	email	start_month	end_month	id	first_name	last_name	email	start_month	end_month
-21253	Vinnie	Sagaser	Vinnie.Sagaser@yoohoo.com	1	5	21253	Vinnie	Sagaser	Vinnie.Sagaser@yoohoo.com	1	5
-39075	Francesco	Maddron	FrancescoMaddron81@gsnail.com	1	5	39075	Francesco	Maddron	FrancescoMaddron81@gsnail.com	1	5
-30648	Hellen	Broadwater	HBroadwater1992@gsnail.com	2	3	30648	Hellen	Broadwater	HBroadwater1992@gsnail.com	2	3
-71778	Ouida	Pardini	Ouida.Pardini@gsnail.com	2	6						
-32436	Wenona	Tankson	WTankson1989@gsnail.com	2	6	32436	Wenona	Tankson	WTankson1989@gsnail.com	2	6
-55580	Clora	Werking	CWerking1996@gsnail.com	2	5	55580	Clora	Werking	CWerking1996@gsnail.com	2	5
-79652	Esteban	Pitner	Esteban.Pitner@gsnail.com	2	4						
-11322	Carmel	Deasis	CD3012@gsnail.com	2	6	11322	Carmel	Deasis	CD3012@gsnail.com	2	6
-73893	Jessi	Vinson	JessiVinson65@gsnail.com	2	6	73893	Jessi	Vinson	JessiVinson65@gsnail.com	2	6
-84750	Ayana	Hodapp	AHodapp1976@coldmail.com	3	6	84750	Ayana	Hodapp	AHodapp1976@coldmail.com	3	6
-34187	Francoise	Feliberty	FFeliberty1984@inlook.com	3	7	34187	Francoise	Feliberty	FFeliberty1984@inlook.com	3	7
-82566	Dusty	Morrical	DMorrical1977@gsnail.com	3	7	82566	Dusty	Morrical	DMorrical1977@gsnail.com	3	7
-31446	Collin	Dobos	CollinDobos57@coldmail.com	3	5	31446	Collin	Dobos	CollinDobos57@coldmail.com	3	5
-23496	Fredia	Bi	Fredia.Bi@gsnail.com	4	8	23496	Fredia	Bi	Fredia.Bi@gsnail.com	4	8
-34664	Troy	Underwood	Troy.Underwood@gsnail.com	4	6	34664	Troy	Underwood	Troy.Underwood@gsnail.com	4	6
-58869	Cordia	Schingeck	CordiaSchingeck82@gsnail.com	4	6	58869	Cordia	Schingeck	CordiaSchingeck82@gsnail.com	4	6
-96977	Peter	Haddaway	Peter.Haddaway@gsnail.com	4	8	96977	Peter	Haddaway	Peter.Haddaway@gsnail.com	4	8
-17873	Vilma	Colaizzi	VColaizzi1973@gsnail.com	4	5	17873	Vilma	Colaizzi	VColaizzi1973@gsnail.com	4	5
-49633	Lane	Dittman	LaneDittman80@gsnail.com	5	9	49633	Lane	Dittman	LaneDittman80@gsnail.com	5	9
-37471	Sharice	Mcmindes	SM2234@gsnail.com	5	6	37471	Sharice	Mcmindes	SM2234@gsnail.com	5	6
-14227	Grady	Antinore	Grady.Antinore@gsnail.com	5	7	14227	Grady	Antinore	Grady.Antinore@gsnail.com	5	7
-90240	Mandy	Ferber	Mandy.Ferber@gsnail.com	5	9	90240	Mandy	Ferber	Mandy.Ferber@gsnail.com	5	9
-22237	Olimpia	Padden	OP5814@inlook.com	5	6	22237	Olimpia	Padden	OP5814@inlook.com	5	6
-84308	Mechelle	Mcgarrell	MM4920@gsnail.com	5	6	84308	Mechelle	Mcgarrell	MM4920@gsnail.com	5	6
-46343	Cecelia	Filipponi	CFilipponi1977@gsnail.com	5	8						
-17951	Latasha	Pasket	Latasha.Pasket@gsnail.com	5	6	17951	Latasha	Pasket	Latasha.Pasket@gsnail.com	5	6
-32353	Nichole	Vogenthaler	NicholeVogenthaler58@gsnail.com	5	6	32353	Nichole	Vogenthaler	NicholeVogenthaler58@gsnail.com	5	6
-59400	Hiedi	Dwight	Hiedi.Dwight@gsnail.com	5	6	59400	Hiedi	Dwight	Hiedi.Dwight@gsnail.com	5	6
-12575	Loni	Manchester	LoniManchester25@gsnail.com	5	8	12575	Loni	Manchester	LoniManchester25@gsnail.com	5	8
-56665	Maple	Yonts	MY2659@coldmail.com	6	8	56665	Maple	Yonts	MY2659@coldmail.com	6	8
-58002	Brooke	Tandetzke	BT7427@gsnail.com	6	7						
-72688	Josiah	Rosseter	Josiah.Rosseter@gsnail.com	6	10	72688	Josiah	Rosseter	Josiah.Rosseter@gsnail.com	6	10
-50328	Amber	Berrian	AB8272@gsnail.com	6	8	50328	Amber	Berrian	AB8272@gsnail.com	6	8
-80644	Meghan	Hoobler	Meghan.Hoobler@inlook.com	6	9	80644	Meghan	Hoobler	Meghan.Hoobler@inlook.com	6	9
-77961	Madelene	Gittelman	MGittelman1988@gsnail.com	6	8	77961	Madelene	Gittelman	MGittelman1988@gsnail.com	6	8
-71091	Michael	Saffer	MSaffer1989@inlook.com	6	7						
-36414	Stacey	Gude	StaceyGude80@gsnail.com	6	10	36414	Stacey	Gude	StaceyGude80@gsnail.com	6	10
-37588	Demetra	Pesek	Demetra.Pesek@gsnail.com	7	9	37588	Demetra	Pesek	Demetra.Pesek@gsnail.com	7	9
-99416	Gisela	Sanfilippo	GSanfilippo1971@gsnail.com	7	11	99416	Gisela	Sanfilippo	GSanfilippo1971@gsnail.com	7	11
-22195	Onita	Butay	Onita.Butay@gsnail.com	7	11	22195	Onita	Butay	Onita.Butay@gsnail.com	7	11
-86812	Dong	Mckendree	Dong.Mckendree@inlook.com	8	10						
-44022	Adeline	Hazinski	AHazinski1991@inlook.com	8	12						
-20801	Janita	Hodgson	JanitaHodgson94@gsnail.com	8	12	20801	Janita	Hodgson	JanitaHodgson94@gsnail.com	8	12
-11660	Layne	Tavella	LayneTavella12@coldmail.com	8	9	11660	Layne	Tavella	LayneTavella12@coldmail.com	8	9
-92017	Vallie	Kirnon	VK7227@coldmail.com	8	9	92017	Vallie	Kirnon	VK7227@coldmail.com	8	9
-58418	Alvera	Fassino	AFassino1978@gsnail.com	8	10	58418	Alvera	Fassino	AFassino1978@gsnail.com	8	10
-19136	Vernetta	Manda	VernettaManda60@coldmail.com	8	10						
-16299	Dortha	Shigemi	DorthaShigemi21@gsnail.com	9	10	16299	Dortha	Shigemi	DorthaShigemi21@gsnail.com	9	10
-44402	Laci	Stein	Laci.Stein@inlook.com	9	11	44402	Laci	Stein	Laci.Stein@inlook.com	9	11
-48666	Shona	Lyssy	Shona.Lyssy@gsnail.com	9	12						
-42358	Hue	Schoenmaker	HueSchoenmaker71@gsnail.com	9	12	42358	Hue	Schoenmaker	HueSchoenmaker71@gsnail.com	9	12
-99734	Rema	Iacobucci	RemaIacobucci20@gsnail.com	9	12	99734	Rema	Iacobucci	RemaIacobucci20@gsnail.com	9	12
-88849	Blanca	Merdian	BlancaMerdian51@gsnail.com	9	10	88849	Blanca	Merdian	BlancaMerdian51@gsnail.com	9	10
-65878	Madie	Armer	MadieArmer54@gsnail.com	10	11	65878	Madie	Armer	MadieArmer54@gsnail.com	10	11
-63145	Tosha	Cochrane	Tosha.Cochrane@gsnail.com	10	12	63145	Tosha	Cochrane	Tosha.Cochrane@gsnail.com	10	12
-14022	Elisabeth	Fredeen	EF3903@gsnail.com	10	11	14022	Elisabeth	Fredeen	EF3903@gsnail.com	10	11
-40508	Ha	Waggett	HW6229@gsnail.com	10	12	40508	Ha	Waggett	HW6229@gsnail.com	10	12
-59945	Gail	Deloatch	GailDeloatch2@yoohoo.com	11	12	59945	Gail	Deloatch	GailDeloatch2@yoohoo.com	11	12
-28930	Marci	Matterson	MMatterson1972@gsnail.com	11	12	28930	Marci	Matterson	MMatterson1972@gsnail.com	11	12
-85799	Vicenta	Bousley	Vicenta.Bousley@gsnail.com	11	12						
-id	first_name	last_name	email	start_month	end_month	id	first_name	last_name	email	start_month	end_month
-71778	Ouida	Pardini	Ouida.Pardini@gsnail.com	2	6						
-79652	Esteban	Pitner	Esteban.Pitner@gsnail.com	2	4						
-46343	Cecelia	Filipponi	CFilipponi1977@gsnail.com	5	8						
-58002	Brooke	Tandetzke	BT7427@gsnail.com	6	7						
-71091	Michael	Saffer	MSaffer1989@inlook.com	6	7						
-86812	Dong	Mckendree	Dong.Mckendree@inlook.com	8	10						
-44022	Adeline	Hazinski	AHazinski1991@inlook.com	8	12						
-19136	Vernetta	Manda	VernettaManda60@coldmail.com	8	10						
-48666	Shona	Lyssy	Shona.Lyssy@gsnail.com	9	12						
-85799	Vicenta	Bousley	Vicenta.Bousley@gsnail.com	11	12						
-
+id_1     first_name_1  last_name_1   email_1                        start_month_1  end_month_1   id_2    first_name_2  last_name_2    email_2                        start_month_2  end_month_2
+21253    Vinnie        Sagaser       Vinnie.Sagaser@yoohoo.com       1              5            21253    Vinnie        Sagaser       Vinnie.Sagaser@yoohoo.com       1              5
+39075    Francesco     Maddron       FrancescoMaddron81@gsnail.com   1              5            39075    Francesco     Maddron       FrancescoMaddron81@gsnail.com   1              5
+30648    Hellen        Broadwater    HBroadwater1992@gsnail.com      2              3            30648    Hellen        Broadwater    HBroadwater1992@gsnail.com      2              3
+71778    Ouida         Pardini       Ouida.Pardini@gsnail.com        2              6            NULL     NULL          NULL           NULL                          NULL           NULL
+32436    Wenona        Tankson       WTankson1989@gsnail.com         2              6            32436    Wenona        Tankson       WTankson1989@gsnail.com         2              6
+55580    Clora         Werking       CWerking1996@gsnail.com         2              5            55580    Clora         Werking       CWerking1996@gsnail.com         2              5
+79652    Esteban       Pitner        Esteban.Pitner@gsnail.com       2              4            NULL     NULL          NULL           NULL                          NULL           NULL
+11322    Carmel        Deasis        CD3012@gsnail.com               2              6            11322    Carmel        Deasis        CD3012@gsnail.com               2              6
+73893    Jessi         Vinson        JessiVinson65@gsnail.com        2              6            73893    Jessi         Vinson        JessiVinson65@gsnail.com        2              6
+84750    Ayana         Hodapp        AHodapp1976@coldmail.com        3              6            84750    Ayana         Hodapp        AHodapp1976@coldmail.com        3              6
+34187    Francoise     Feliberty     FFeliberty1984@inlook.com       3              7            34187    Francoise     Feliberty     FFeliberty1984@inlook.com       3              7
+82566    Dusty         Morrical      DMorrical1977@gsnail.com        3              7            82566    Dusty         Morrical      DMorrical1977@gsnail.com        3              7
+31446    Collin        Dobos         CollinDobos57@coldmail.com      3              5            31446    Collin        Dobos         CollinDobos57@coldmail.com      3              5
+23496    Fredia        Bi            Fredia.Bi@gsnail.com            4              8            23496    Fredia        Bi            Fredia.Bi@gsnail.com            4              8
+34664    Troy          Underwood     Troy.Underwood@gsnail.com       4              6            34664    Troy          Underwood     Troy.Underwood@gsnail.com       4              6
+58869    Cordia        Schingeck     CordiaSchingeck82@gsnail.com    4              6            58869    Cordia        Schingeck     CordiaSchingeck82@gsnail.com    4              6
+96977    Peter         Haddaway      Peter.Haddaway@gsnail.com       4              8            96977    Peter         Haddaway      Peter.Haddaway@gsnail.com       4              8
+17873    Vilma         Colaizzi      VColaizzi1973@gsnail.com        4              5            17873    Vilma         Colaizzi      VColaizzi1973@gsnail.com        4              5
+49633    Lane          Dittman       LaneDittman80@gsnail.com        5              9            49633    Lane          Dittman       LaneDittman80@gsnail.com        5              9
+37471    Sharice       Mcmindes      SM2234@gsnail.com               5              6            37471    Sharice       Mcmindes      SM2234@gsnail.com               5              6
+14227    Grady         Antinore      Grady.Antinore@gsnail.com       5              7            14227    Grady         Antinore      Grady.Antinore@gsnail.com       5              7
+90240    Mandy         Ferber        Mandy.Ferber@gsnail.com         5              9            90240    Mandy         Ferber        Mandy.Ferber@gsnail.com         5              9
+22237    Olimpia       Padden        OP5814@inlook.com               5              6            22237    Olimpia       Padden        OP5814@inlook.com               5              6
+84308    Mechelle      Mcgarrell     MM4920@gsnail.com               5              6            84308    Mechelle      Mcgarrell     MM4920@gsnail.com               5              6
+46343    Cecelia       Filipponi     CFilipponi1977@gsnail.com       5              8            NULL     NULL          NULL           NULL                           NULL           NULL
+17951    Latasha       Pasket        Latasha.Pasket@gsnail.com       5              6            17951    Latasha       Pasket        Latasha.Pasket@gsnail.com       5              6
+32353    Nichole       Vogenthaler   NicholeVogenthaler58@gsnail.com 5              6            32353    Nichole       Vogenthaler   NicholeVogenthaler58@gsnail.com 5              6
+59400    Hiedi         Dwight        Hiedi.Dwight@gsnail.com         5              6            59400    Hiedi         Dwight        Hiedi.Dwight@gsnail.com         5              6
+12575    Loni          Manchester    LoniManchester25@gsnail.com     5              8            12575    Loni          Manchester     LoniManchester25@gsnail.com    5              8
+56665    Maple         Yonts         MY2659@coldmail.com             6              8            56665    Maple         Yonts         MY2659@coldmail.com             6              8
+58002    Brooke        Tandetzke     BT7427@gsnail.com               6              7            NULL     NULL          NULL           NULL                           NULL           NULL    |
+```
 
 
 
