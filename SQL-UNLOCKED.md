@@ -598,6 +598,8 @@ Let’s start by counting the number of customers who were subscribed to the `ne
 Use `COUNT(*)` to count the number of rows and a `WHERE` clause to restrict to two conditions:                     
 * `start_month <= 3`
 * `end_month >= 3`
+```sql
+
 
 
 
