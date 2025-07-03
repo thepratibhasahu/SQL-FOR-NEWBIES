@@ -557,14 +557,47 @@ class_id  description              weeks  enrollment_cap  student_id  first_name
 * You should already know how to do this join. But in this exercise, you learned that the matching column is usually a primary key of a table and foreign key of another!
 
 # Cross Join
+So far, we’ve focused on matching rows that have some information in common.
 
+Sometimes, we just want to combine all rows of one table with all rows of another table.
 
+For instance, if we had a table of `shirts` and a table of `pants`, we might want to know all the possible combinations to create different outfits.
 
+Our code might look like this:
+```sql
+SELECT shirts.shirt_color,
+   pants.pants_color
+FROM shirts
+CROSS JOIN pants;
+```
+* The first two lines select the columns `shirt_color` and `pants_color`.
+* The third line pulls data from the table `shirts`.
+* The fourth line performs a `CROSS JOIN` with `pants`.
 
+Notice that cross joins don’t require an ON statement. You’re not really joining on any columns!
 
+If we have 3 different shirts (white, grey, and olive) and 2 different pants (light denim and black), the results might look like this:
 
+<img width="269" alt="image" src="https://github.com/user-attachments/assets/22934ae7-808d-4656-8193-12935ace2c1b" />
 
+3 shirts × 2 pants = 6 combinations!
 
+This clothing example is fun, but it’s not very practically useful.
+
+A more common usage of `CROSS JOIN` is when we need to compare each row of a table to a list of values.
+
+Let’s return to our `newspaper` subscriptions. This table contains two columns that we haven’t discussed yet:
+
+* `start_month`: the first month where the customer subscribed to the print newspaper (e.g., `2` for February)
+* `end_month`: the final month where the customer subscribed to the print newspaper.
+
+Suppose we wanted to know how many users were subscribed during each month of the year. For each month (`1`, `2`, `3`) we would need to know if a user was subscribed. Follow the steps below to see how we can use a `CROSS JOIN` to solve this problem.
+
+**(1.)** Eventually, we’ll use a cross join to help us, but first, let’s try a simpler problem.             
+Let’s start by counting the number of customers who were subscribed to the `newspaper` during March.           
+Use `COUNT(*)` to count the number of rows and a `WHERE` clause to restrict to two conditions:                     
+* `start_month <= 3`
+* `end_month >= 3`
 
 
 
