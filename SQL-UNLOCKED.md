@@ -913,7 +913,24 @@ month | subscribers
 11    | 15
 12    | 10
 ```
+# Union
+Sometimes we just want to stack one dataset on top of the other. Well, the `UNION` operator allows us to do that.
 
+Suppose we have two tables and they have the same columns.
 
+`table1:`
+<img width="269" alt="image" src="https://github.com/user-attachments/assets/48c28bd2-f44a-4c6f-a1fc-52a140e8285a" />
+
+`table2:`
+<img width="271" alt="image" src="https://github.com/user-attachments/assets/d938b500-4c0d-4796-92fd-b70ddc22ab97" />
+
+If we combine these two with `UNION`:
+```sql
+SELECT *
+FROM table1
+UNION
+SELECT *
+FROM table2;
+```
 
 
