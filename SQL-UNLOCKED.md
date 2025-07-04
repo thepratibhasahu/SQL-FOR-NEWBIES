@@ -599,9 +599,320 @@ Use `COUNT(*)` to count the number of rows and a `WHERE` clause to restrict to t
 * `start_month <= 3`
 * `end_month >= 3`
 ```sql
+SELECT COUNT(*)
+FROM newspaper
+WHERE start_month <= 3 
+  AND end_month >= 3;
+```
+📝 “During March” means that the customer’s starting month was in or before March and final month was in or after March:
 
+### 🟩Output
+```sql
+ COUNT(*)
+------------
+    13
+```
+**(2.)** Don’t remove the previous query.                                       
+The previous query lets us investigate one month at a time. In order to check across all months, we’re going to need to use a cross join.                                              
+Our database contains another table called `months` which contains the numbers between 1 and 12.                
+Select all columns from the cross join of `newspaper` and `months`.
+```sql
+SELECT COUNT(*) FROM newspaper
+WHERE start_month <= 3 AND end_month >= 3;
 
+select * FROM newspaper
+CROSS JOIN months;
+```
+### 🟩Output
+```sql
+ COUNT(*)
+------------
+    13
 
+id     | first_name | last_name      | email                          | start_month | end_month | month
+-------|------------|----------------|--------------------------------|--------------|-----------|-------
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 1
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 2
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 3
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 4
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 5
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 6
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 7
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 8
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 9
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 10
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 11
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 12
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 1
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 2
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 3
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 4
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 5
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 6
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 7
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 8
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 9
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 10
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 11
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 12
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 1
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 2
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 3
+...
+```
+**(3.)** Don’t remove your previous queries.                                         
+Create a third query where you add a `WHERE` statement to your cross join to restrict to two conditions:     
+* `start_month <= month`                                                           
+* `end_month >= month`
+This will select all months where a user was subscribed.
+```sql
+SELECT COUNT(*) FROM newspaper
+WHERE start_month <= 3 AND end_month >= 3;
+
+select * FROM newspaper
+CROSS JOIN months;
+
+select * FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month AND end_month >= month;
+```
+### 🟩Output
+```sql
+ COUNT(*)
+------------
+    13
+
+id     | first_name | last_name      | email                          | start_month | end_month | month
+-------|------------|----------------|--------------------------------|--------------|-----------|-------
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 1
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 2
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 3
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 4
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 5
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 6
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 7
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 8
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 9
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 10
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 11
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 12
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 1
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 2
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 3
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 4
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 5
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 6
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 7
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 8
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 9
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 10
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 11
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 12
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 1
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 2
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 3
+...
+
+id     | first_name | last_name     | email                          | start_month | end_month | month
+-------|------------|---------------|--------------------------------|-------------|-----------|-------
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 1
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 2
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 3
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 4
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 5
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 1
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 2
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 3
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 4
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 5
+30648  | Hellen     | Broadwater    | HBroadwater1992@gsnail.com     | 2           | 3         | 2
+30648  | Hellen     | Broadwater    | HBroadwater1992@gsnail.com     | 2           | 3         | 3
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 2
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 3
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 4
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 5
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 6
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 2
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 3
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 4
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 5
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 6
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 2
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 3
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 4
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 5
+79652  | Esteban    | Pitner        | Esteban.Pitner@gsnail.com      | 2           | 4         | 2
+79652  | Esteban    | Pitner        | Esteban.Pitner@gsnail.com      | 2           | 4         | 3
+79652  | Esteban    | Pitner        | Esteban.Pitner@gsnail.com      | 2           | 4         | 4
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 2
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 3
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 4
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 5
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 6
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 2
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 3
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 4
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 5
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 6
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 3
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 4
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 5
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 6
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 3
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 4
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 5
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 6
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 7
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 3
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 4
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 5
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 6
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 7
+31446  | Collin     | Dobos         | CollinDobos57@coldmail.com     | 3           | 5         | 3
+31446  | Collin     | Dobos         | CollinDobos57@coldmail.com     | 3           | 5         | 4
+31446  | Collin     | Dobos         | CollinDobos57@coldmail.com     | 3           | 5         | 5
+```
+**(4.)** Don’t remove your previous queries.                                   
+Create a final query where you aggregate over each month to count the number of subscribers.                    
+Fill in the blanks in the following query:
+```sql
+SELECT month,
+  COUNT(*)
+FROM ________
+CROSS JOIN ________
+WHERE ________ AND ________
+GROUP BY ________;
+```
+```sql
+SELECT COUNT(*) FROM newspaper
+WHERE start_month <= 3 AND end_month >= 3;
+
+select * FROM newspaper
+CROSS JOIN months;
+
+select * FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month AND end_month >= month;
+
+SELECT month,
+   COUNT(*) AS 'subscribers'
+FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month 
+   AND end_month >= month
+GROUP BY month;
+```
+### 🟩Output
+```sql
+ COUNT(*)
+------------
+    13
+
+id     | first_name | last_name      | email                          | start_month | end_month | month
+-------|------------|----------------|--------------------------------|--------------|-----------|-------
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 1
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 2
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 3
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 4
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 5
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 6
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 7
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 8
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 9
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 10
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 11
+21253  | Vinnie     | Sagaser        | Vinnie.Sagaser@yoohoo.com      | 1            | 5         | 12
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 1
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 2
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 3
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 4
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 5
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 6
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 7
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 8
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 9
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 10
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 11
+39075  | Francesco  | Maddron        | FrancescoMaddron81@gsnail.com  | 1            | 5         | 12
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 1
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 2
+30648  | Hellen     | Broadwater     | HBroadwater1992@gsnail.com     | 2            | 3         | 3
+...
+
+id     | first_name | last_name     | email                          | start_month | end_month | month
+-------|------------|---------------|--------------------------------|-------------|-----------|-------
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 1
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 2
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 3
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 4
+21253  | Vinnie     | Sagaser       | Vinnie.Sagaser@yoohoo.com      | 1           | 5         | 5
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 1
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 2
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 3
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 4
+39075  | Francesco  | Maddron       | FrancescoMaddron81@gsnail.com  | 1           | 5         | 5
+30648  | Hellen     | Broadwater    | HBroadwater1992@gsnail.com     | 2           | 3         | 2
+30648  | Hellen     | Broadwater    | HBroadwater1992@gsnail.com     | 2           | 3         | 3
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 2
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 3
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 4
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 5
+71778  | Ouida      | Pardini       | Ouida.Pardini@gsnail.com       | 2           | 6         | 6
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 2
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 3
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 4
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 5
+32436  | Wenona     | Tankson       | WTankson1989@gsnail.com        | 2           | 6         | 6
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 2
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 3
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 4
+55580  | Clora      | Werking       | CWerking1996@gsnail.com        | 2           | 5         | 5
+79652  | Esteban    | Pitner        | Esteban.Pitner@gsnail.com      | 2           | 4         | 2
+79652  | Esteban    | Pitner        | Esteban.Pitner@gsnail.com      | 2           | 4         | 3
+79652  | Esteban    | Pitner        | Esteban.Pitner@gsnail.com      | 2           | 4         | 4
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 2
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 3
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 4
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 5
+11322  | Carmel     | Deasis        | CD3012@gsnail.com              | 2           | 6         | 6
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 2
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 3
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 4
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 5
+73893  | Jessi      | Vinson        | JessiVinson65@gsnail.com       | 2           | 6         | 6
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 3
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 4
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 5
+84750  | Ayana      | Hodapp        | AHodapp1976@coldmail.com       | 3           | 6         | 6
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 3
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 4
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 5
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 6
+34187  | Francoise  | Feliberty     | FFeliberty1984@inlook.com      | 3           | 7         | 7
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 3
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 4
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 5
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 6
+82566  | Dusty      | Morrical      | DMorrical1977@gsnail.com       | 3           | 7         | 7
+31446  | Collin     | Dobos         | CollinDobos57@coldmail.com     | 3           | 5         | 3
+31446  | Collin     | Dobos         | CollinDobos57@coldmail.com     | 3           | 5         | 4
+31446  | Collin     | Dobos         | CollinDobos57@coldmail.com     | 3           | 5         | 5
+
+month | subscribers
+-------------------
+1     | 2
+2     | 9
+3     | 13
+4     | 17
+5     | 27
+6     | 30
+7     | 20
+8     | 22
+9     | 21
+10    | 19
+11    | 15
+12    | 10
+```
 
 
 
