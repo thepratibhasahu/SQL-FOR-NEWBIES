@@ -1003,129 +1003,52 @@ JOIN customers
 
 Essentially, we are putting a whole first query inside the parentheses `()` and giving it a name. After that, we can use this name as if it’s a table and write a new query using the first query.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**(1.)** Place the whole query below into a `WITH` statement, inside parentheses `()`, and give it name `previous_query`:
+```sql
+SELECT customer_id,
+   COUNT(subscription_id) AS 'subscriptions'
+FROM orders
+GROUP BY customer_id
+```
+Join the temporary table `previous_query` with `customers` table and select the following columns:
+
+* `customers.customer_name`
+* `previous_query.subscriptions`
+
+Check the answer in the hint below.
+```sql
+WITH previous_query AS (
+   SELECT customer_id,
+      COUNT(subscription_id) AS 'subscriptions'
+   FROM orders
+   GROUP BY customer_id
+)
+SELECT customers.customer_name, 
+   previous_query.subscriptions
+FROM previous_query
+JOIN customers
+  ON previous_query.customer_id = customers.customer_id;
+```
+### 🟩Output
+```sql
+customer_name        subscriptions
+Allie Rahaim         4
+Jacquline Diddle     1
+Lizabeth Letsche     6
+Jessia Butman        2
+Inocencia Goyco      2
+Bethann Schraub      1
+Janay Priolo         1
+Ophelia Sturdnant    1
+Eryn Vilar           2
+```
+* Remember to use the following `ON` statement as part of your `JOIN`.
+
+* And for review, `AS` is how you give something an alias.
+
+* Here, we are essentially giving everything inside the parentheses (the sub-query) the name of `previous_query` using `AS`.
+
+* Then, `previous_query` is used as a temporary table that we will query from and also join with the `customers` table.
+
+📝 Do not include `;` inside of the `()` of your `WITH` statement.
 
