@@ -109,34 +109,37 @@ GROUP BY category;
 ```
 ### 🟩Output
 ```SQL
-**(category	            AVG(valuation)
-General                 4290000.0
-Algorithms              7600000.0
-Augmented Reality       8000000000.0
-Big Data Analytics      15000000.0
-Cloud Computing         95000000.0
-Customer Service        640000000.0
-Data Analytics          null
-E-commerce              60250000.0
-Education               2023800000.0
-Enterprise              38508333333.3333
-Fashion                 3200000.0
-Fitness                 67500000.0
-Gambling                322000000.0
-Games                   1600000.0
-Health Care             380490000000.0
-Logistics               70000000.0
-Mobile                  9600000.0
-Nanotechnology          150000000.0
-Real Estate             20000000000.0
-SaaS                    401000000.0
-Security                6333333333.33333
-Social                  82425833.3333333
-Technology              3100000000.0
-Travel                  12501250000.0
-Venture Capital         3000000000.0
-Video Streaming         null
-Virtual Reality         2150000.0
++---------------------+----------------------+
+|      category       |   AVG(valuation)     |
++---------------------+----------------------+
+| General             |      4290000.00      |
+| Algorithms          |      7600000.00      |
+| Augmented Reality   |   8000000000.00      |
+| Big Data Analytics  |     15000000.00      |
+| Cloud Computing     |     95000000.00      |
+| Customer Service    |    640000000.00      |
+| Data Analytics      |         null         |
+| E-commerce          |     60250000.00      |
+| Education           |   2023800000.00      |
+| Enterprise          |  38508333333.33      |
+| Fashion             |      3200000.00      |
+| Fitness             |     67500000.00      |
+| Gambling            |    322000000.00      |
+| Games               |      1600000.00      |
+| Health Care         | 380490000000.00      |
+| Logistics           |     70000000.00      |
+| Mobile              |      9600000.00      |
+| Nanotechnology      |    150000000.00      |
+| Real Estate         |  20000000000.00      |
+| SaaS                |    401000000.00      |
+| Security            |   6333333333.33      |
+| Social              |    82425833.33       |
+| Technology          |   3100000000.00      |
+| Travel              |  12501250000.00      |
+| Venture Capital     |   3000000000.00      |
+| Video Streaming     |         null         |
+| Virtual Reality     |      2150000.00      |
++---------------------+----------------------+
 ```
 **( 9.)** Return the average `valuation`, in each `category`.                                
 Round the averages to two decimal places.
@@ -146,34 +149,37 @@ GROUP BY category;
 ```
 ### 🟩Output
 ```SQL
-category	            ROUND(AVG(valuation), 2)
-General                 4290000.00
-Algorithms              7600000.00
-Augmented Reality       8000000000.00
-Big Data Analytics      15000000.00
-Cloud Computing         95000000.00
-Customer Service        640000000.00
-Data Analytics          null
-E-commerce              60250000.00
-Education               2023800000.00
-Enterprise              38508333333.33
-Fashion                 3200000.00
-Fitness                 67500000.00
-Gambling                322000000.00
-Games                   1600000.00
-Health Care             380490000000.00
-Logistics               70000000.00
-Mobile                  9600000.00
-Nanotechnology          150000000.00
-Real Estate             20000000000.00
-SaaS                    401000000.00
-Security                6333333333.33
-Social                  82425833.33
-Technology              3100000000.00
-Travel                  12501250000.00
-Venture Capital         3000000000.00
-Video Streaming         null
-Virtual Reality         2150000.00
++---------------------+--------------------------+
+|      category       | ROUND(AVG(valuation), 2) |
++---------------------+--------------------------+
+| General             |       4290000.00         |
+| Algorithms          |       7600000.00         |
+| Augmented Reality   |    8000000000.00         |
+| Big Data Analytics  |      15000000.00         |
+| Cloud Computing     |      95000000.00         |
+| Customer Service    |     640000000.00         |
+| Data Analytics      |          null            |
+| E-commerce          |      60250000.00         |
+| Education           |    2023800000.00         |
+| Enterprise          |   38508333333.33         |
+| Fashion             |       3200000.00         |
+| Fitness             |      67500000.00         |
+| Gambling            |     322000000.00         |
+| Games               |       1600000.00         |
+| Health Care         |  380490000000.00         |
+| Logistics           |      70000000.00         |
+| Mobile              |       9600000.00         |
+| Nanotechnology      |     150000000.00         |
+| Real Estate         |   20000000000.00         |
+| SaaS                |     401000000.00         |
+| Security            |    6333333333.33         |
+| Social              |      82425833.33         |
+| Technology          |    3100000000.00         |
+| Travel              |   12501250000.00         |
+| Venture Capital     |    3000000000.00         |
+| Video Streaming     |          null            |
+| Virtual Reality     |       2150000.00         |
++---------------------+--------------------------+
 ```
 **(10.)** Return the average `valuation`, in each `category`.                      
 Round the averages to two decimal places.                                 
@@ -263,10 +269,13 @@ ORDER BY 2 DESC;
 ```
 ### 🟩Output
 ```SQL
-category	COUNT(*)
-Social	    12
-Mobile	    10
-Education	5
++-----------+-----------+
+| category  | COUNT(*)  |
++-----------+-----------+
+| Social    |    12     |
+| Mobile    |    10     |
+| Education |     5     |
++-----------+-----------+
 ```
 📝 you are filtering on a condition that has an aggregate function, you need to use `HAVING` instead of `WHERE`.        
 📝 If you want to go a step further, sort the result using `ORDER BY`.
@@ -281,30 +290,33 @@ GROUP BY location;
 ```
 ### 🟩Output
 ```SQL
-location	        AVG(employees)
-Atlanta	            3.0
-Boulder	            3.0
-Brooklyn	        502.666666666667
-Chicago	            12.0
-Columbus	        2.0
-Denver	            12.0
-Fort Lauderdale	    500.0
-Irvine	            2.0
-Long Island	        5.0
-Los Angeles	        6.83333333333333
-Minneapolis	        20.0
-New Delhi	        250.0
-New York	        702.75
-Omaha	            65.0
-Palo Alto	        125.833333333333
-Paris	            30.0
-San Francisco	    1920.4
-Savannah	        6.0
-Scranton	        6.0
-Seattle	            9.66666666666667
-Silicon Valley	    1804.6
-Virginia Beach	    15.0
-Washington DC	    8.0
++--------------------+------------------+
+|     location       | AVG(employees)   |
++--------------------+------------------+
+| Atlanta            |     3.00         |
+| Boulder            |     3.00         |
+| Brooklyn           |   502.67         |
+| Chicago            |    12.00         |
+| Columbus           |     2.00         |
+| Denver             |    12.00         |
+| Fort Lauderdale    |   500.00         |
+| Irvine             |     2.00         |
+| Long Island        |     5.00         |
+| Los Angeles        |     6.83         |
+| Minneapolis        |    20.00         |
+| New Delhi          |   250.00         |
+| New York           |   702.75         |
+| Omaha              |    65.00         |
+| Palo Alto          |   125.83         |
+| Paris              |    30.00         |
+| San Francisco      |  1920.40         |
+| Savannah           |     6.00         |
+| Scranton           |     6.00         |
+| Seattle            |     9.67         |
+| Silicon Valley     |  1804.60         |
+| Virginia Beach     |    15.00         |
+| Washington DC      |     8.00         |
++--------------------+------------------+
 ```
 **(14.)** What is the average size of a startup in each `location`, with average sizes above 500?
 ```sql
@@ -315,9 +327,12 @@ HAVING AVG(employees) > 500;
 ```
 ### 🟩Output
 ```SQL
-location	        AVG(employees)
-Brooklyn	        502.666666666667
-New York	        702.75
-San Francisco	    1920.4
-Silicon Valley	    1804.6
++------------------+------------------+
+|     location     | AVG(employees)   |
++------------------+------------------+
+|     Brooklyn     |     502.67       |
+|    New York      |     702.75       |
+| San Francisco    |    1920.40       |
+| Silicon Valley   |    1804.60       |
++------------------+------------------+
 ```
